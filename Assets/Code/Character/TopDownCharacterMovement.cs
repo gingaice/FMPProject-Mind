@@ -25,7 +25,7 @@ public class TopDownCharacterMovement : MonoBehaviour
         var targetVector = new Vector3(_input.InputVector.x, 0, _input.InputVector.y);
 
         //move in the direction we are aiming
-        var moevementVector = MoveTowardTarget(targetVector);
+        var movementVector = MoveTowardTarget(targetVector);
 
         //rotate in the way were going
         RotateTowardMovementVector(movementVector);
@@ -34,6 +34,7 @@ public class TopDownCharacterMovement : MonoBehaviour
 
     private void RotateTowardMovementVector(Vector3 movementVector)
     {
+        if (movementVector.magnitude == 0) { return; }
         var rotation = Quaternion.LookRotation(movementVector);
         transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, rotateSpeed);
     }
