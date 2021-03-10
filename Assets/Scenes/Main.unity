@@ -953,7 +953,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _patrolWaiting: 0
-  _totalWaitTime: 3
+  _totalWaitTime: 10
   _switchProbability: 0.2
   _patrolPoints:
   - {fileID: 1684012797}
@@ -961,6 +961,7 @@ MonoBehaviour:
   - {fileID: 1254463028}
   - {fileID: 1549618946}
   - {fileID: 1591546289}
+  bob: {fileID: 0}
 --- !u!114 &1231454163
 MonoBehaviour:
   m_ObjectHideFlags: 0

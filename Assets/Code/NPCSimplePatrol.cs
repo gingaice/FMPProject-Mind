@@ -21,8 +21,6 @@ public class NPCSimplePatrol : MonoBehaviour
     [SerializeField]
     List<Waypoint> _patrolPoints;
 
-
-
     //private variables for base behaviour
     NavMeshAgent _navMeshAgent;
     int _currentPatrolIndex;
@@ -30,6 +28,8 @@ public class NPCSimplePatrol : MonoBehaviour
     bool _waiting;
     bool _patrolForward;
     float _waitTimer;
+
+    private int _rotationSpeed = 40;
 
     // Start is called before the first frame update
     void Start()
@@ -86,11 +86,15 @@ public class NPCSimplePatrol : MonoBehaviour
             if (_waitTimer >= _totalWaitTime)
             {
                 _waiting = false;
+                
+
 
                 ChangePatrolPoint();
                 SetDestination();
                 _patrolWaiting = false;
             }
+
+            transform.Rotate(0, _rotationSpeed * Time.deltaTime, 0);
         }
 
 
