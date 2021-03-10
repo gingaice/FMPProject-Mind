@@ -29,7 +29,7 @@ public class NPCSimplePatrol : MonoBehaviour
     bool _patrolForward;
     float _waitTimer;
 
-    private int _rotationSpeed = 40;
+    private static int _rotationSpeed = 40;
 
     // Start is called before the first frame update
     void Start()
