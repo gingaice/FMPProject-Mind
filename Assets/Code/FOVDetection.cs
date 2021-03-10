@@ -11,7 +11,11 @@ public class FOVDetection : MonoBehaviour
 
     private bool isInFOV = false;
 
-    public bool lockOn = false;
+    //the lock on stuff
+    [SerializeField]
+    public static bool lockOn = false;
+
+    public int chasers = 300;
 
     private void OnDrawGizmos()
     {
@@ -65,7 +69,7 @@ public class FOVDetection : MonoBehaviour
 
                         if (Physics.Raycast(ray, out hit, maxRadius))
                         {
-                            if (hit.transform == target)
+                            if (hit.transform == target)                          
                                 return true;
                         }
                     }
@@ -81,5 +85,32 @@ public class FOVDetection : MonoBehaviour
     private void Update()
     {
         isInFOV = inFOV(transform, player, maxAngle, maxRadius);
+
+        if (isInFOV == true)
+        {
+            lockOn = true;
+        }
+        
+        if (isInFOV == false)
+        {
+            lockOn = false;
+        }
+
+        if(lockOn == true)
+        {
+            chasers--;
+
+            if(chasers <= 50)
+            {
+                lockOn = false;
+            }
+            else
+            {
+                
+            }
+            
+        }
+
+
     }
 }

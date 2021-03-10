@@ -11,11 +11,11 @@ public class NPCSimplePatrol : MonoBehaviour
 
     //the total time we wait at each node
     [SerializeField]
-    float _totalWaitTime = 3f;
+    float _totalWaitTime = 10f;
 
     //the probability of switching direction
     [SerializeField]
-    float _switchProbability = 0.2f;
+    float _switchProbability = 0.5f;
 
     //the list of all patrol nodes to visit
     [SerializeField]
@@ -64,12 +64,13 @@ public class NPCSimplePatrol : MonoBehaviour
         if(_travelling && _navMeshAgent.remainingDistance <= 1.0f)
         {
             _travelling = false;
+            _patrolWaiting = true;
 
             //If were going to wait then wait
             if (_patrolWaiting)
             {
                 _waiting = true;
-                _waitTimer = 5f;
+                _waitTimer = 0f;
             }
             else
             {
@@ -88,6 +89,7 @@ public class NPCSimplePatrol : MonoBehaviour
 
                 ChangePatrolPoint();
                 SetDestination();
+                _patrolWaiting = false;
             }
         }
 
