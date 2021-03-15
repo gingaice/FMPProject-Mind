@@ -366,8 +366,6 @@ GameObject:
   - component: {fileID: 461998559}
   - component: {fileID: 461998558}
   - component: {fileID: 461998563}
-  - component: {fileID: 461998562}
-  - component: {fileID: 461998564}
   - component: {fileID: 461998565}
   - component: {fileID: 461998566}
   m_Layer: 0
@@ -454,21 +452,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &461998562
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 461998557}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5d73327c5a19844ea5e6a4ae8d69c64, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 4
-  rotateSpeed: 15
-  cameraa: {fileID: 963194227}
 --- !u!54 &461998563
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -485,18 +468,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 116
   m_CollisionDetection: 0
---- !u!114 &461998564
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 461998557}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f29d0daa86cfa814ba2c2b9db9718ba2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!143 &461998565
 CharacterController:
   m_ObjectHideFlags: 0
@@ -953,7 +924,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _patrolWaiting: 0
-  _totalWaitTime: 10
+  _totalWaitTime: 5
   _switchProbability: 0.2
   _patrolPoints:
   - {fileID: 1684012797}
@@ -961,7 +932,10 @@ MonoBehaviour:
   - {fileID: 1254463028}
   - {fileID: 1549618946}
   - {fileID: 1591546289}
-  bob: {fileID: 0}
+  chaserTime: 500
+  decreaseSpeed: 20
+  Player: {fileID: 461998561}
+  fovcheck: 0
 --- !u!114 &1231454163
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -977,7 +951,7 @@ MonoBehaviour:
   player: {fileID: 461998561}
   maxAngle: 45
   maxRadius: 10
-  chasers: 300
+  checker: 0
 --- !u!65 &1231454164
 BoxCollider:
   m_ObjectHideFlags: 0

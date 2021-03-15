@@ -31,6 +31,11 @@ public class NPCSimplePatrol : MonoBehaviour
 
     private static int _rotationSpeed = 40;
 
+    public float chaserTime = 500f;
+    public float decreaseSpeed = 20f;
+    public Transform Player;
+    public bool fovcheck = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -76,7 +81,10 @@ public class NPCSimplePatrol : MonoBehaviour
             {
                 ChangePatrolPoint();
                 SetDestination();
+                Chasing();
             }
+
+
         }
 
         //instead if were waiting
@@ -92,12 +100,34 @@ public class NPCSimplePatrol : MonoBehaviour
                 ChangePatrolPoint();
                 SetDestination();
                 _patrolWaiting = false;
+                Chasing();
             }
 
             transform.Rotate(0, _rotationSpeed * Time.deltaTime, 0);
         }
 
+        if (FOVDetection.lockOn == true)
+        {
+            fovcheck = true;
 
+            if(fovcheck == true)
+            {
+                chaserTime -= Time.deltaTime * decreaseSpeed;
+            }
+        }
+    }
+    private void Chasing()
+    {
+        //if (fovcheck == true)
+        //{
+            //chaserTime -= Time.deltaTime * decreaseSpeed;
+
+            if(chaserTime <= 460)
+            {
+                //Vector3 targetVector = Player.transform.position;
+                _navMeshAgent.SetDestination(Player.position);
+            }
+        //}
     }
     private void SetDestination()
     {

@@ -15,7 +15,16 @@ public class FOVDetection : MonoBehaviour
     [SerializeField]
     public static bool lockOn = false;
 
-    public int chasers = 300;
+    //public int chasers = 300;
+
+    public bool checker = false;
+
+    public void Start()
+    {
+
+    }
+
+
 
     private void OnDrawGizmos()
     {
@@ -44,7 +53,7 @@ public class FOVDetection : MonoBehaviour
 
     }
 
-    public static bool inFOV (Transform checkingObject, Transform target, float maxAngle, float maxRadius)
+    public static bool inFOV(Transform checkingObject, Transform target, float maxAngle, float maxRadius)
     {
         // this checks every object in the radius of the Ai
         Collider[] overlaps = new Collider[10];
@@ -69,7 +78,7 @@ public class FOVDetection : MonoBehaviour
 
                         if (Physics.Raycast(ray, out hit, maxRadius))
                         {
-                            if (hit.transform == target)                          
+                            if (hit.transform == target)
                                 return true;
                         }
                     }
@@ -89,28 +98,19 @@ public class FOVDetection : MonoBehaviour
         if (isInFOV == true)
         {
             lockOn = true;
+            checker = true;
         }
-        
+        else
+        {
+            lockOn = false;
+            checker = false;
+        }
+        /**
         if (isInFOV == false)
         {
             lockOn = false;
+            checker = false;
         }
-
-        if(lockOn == true)
-        {
-            chasers--;
-
-            if(chasers <= 50)
-            {
-                lockOn = false;
-            }
-            else
-            {
-                
-            }
-            
-        }
-
-
+        **/
     }
 }
