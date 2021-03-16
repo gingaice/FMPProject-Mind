@@ -11,7 +11,7 @@ public class NPCSimplePatrol : MonoBehaviour
 
     //the total time we wait at each node
     [SerializeField]
-    float _totalWaitTime = 10f;
+    float _totalWaitTime = 5f;
 
     //the probability of switching direction
     [SerializeField]
@@ -32,9 +32,11 @@ public class NPCSimplePatrol : MonoBehaviour
     private static int _rotationSpeed = 40;
 
     public float chaserTime = 500f;
-    public float decreaseSpeed = 20f;
+    public float decreaseSpeed = 50f;
     public Transform Player;
     public bool fovcheck = false;
+
+    public bool chaserIsTrue;
 
     // Start is called before the first frame update
     void Start()
@@ -58,7 +60,6 @@ public class NPCSimplePatrol : MonoBehaviour
             {
                 Debug.Log("insufficient patrol points for basic patrolling behaviour");
             }
-
         }
     }
 
@@ -66,7 +67,7 @@ public class NPCSimplePatrol : MonoBehaviour
     public void Update()
     {
         //checking to see if were close to the destination that we want to go too
-        if(_travelling && _navMeshAgent.remainingDistance <= 1.0f)
+        if(_travelling && _navMeshAgent.remainingDistance <= 1.5f)
         {
             _travelling = false;
             _patrolWaiting = true;
@@ -81,10 +82,8 @@ public class NPCSimplePatrol : MonoBehaviour
             {
                 ChangePatrolPoint();
                 SetDestination();
-                Chasing();
+                //Chasing();
             }
-
-
         }
 
         //instead if were waiting
@@ -95,12 +94,10 @@ public class NPCSimplePatrol : MonoBehaviour
             {
                 _waiting = false;
                 
-
-
                 ChangePatrolPoint();
                 SetDestination();
                 _patrolWaiting = false;
-                Chasing();
+                //Chasing();
             }
 
             transform.Rotate(0, _rotationSpeed * Time.deltaTime, 0);
@@ -108,6 +105,13 @@ public class NPCSimplePatrol : MonoBehaviour
 
         if (FOVDetection.lockOn == true)
         {
+            /**
+            if(isChasing == true)
+            {
+                StartCoroutine(Chasing());
+            }
+            **/
+
             fovcheck = true;
 
             if(fovcheck == true)
@@ -115,28 +119,52 @@ public class NPCSimplePatrol : MonoBehaviour
                 chaserTime -= Time.deltaTime * decreaseSpeed;
             }
         }
+        else
+        {
+            fovcheck = false;
+        }
     }
+
+    /**
     private void Chasing()
     {
-        //if (fovcheck == true)
-        //{
-            //chaserTime -= Time.deltaTime * decreaseSpeed;
-
+        //_patrolWaiting = false;
             if(chaserTime <= 460)
             {
-                //Vector3 targetVector = Player.transform.position;
-                _navMeshAgent.SetDestination(Player.position);
+                _patrolWaiting = false;
+
+                chaserIsTrue = true;
+                //_navMeshAgent.SetDestination(Player.position);
             }
-        //}
+
     }
+    **/
+    
+
     private void SetDestination()
     {
+        if (chaserTime <= 460)
+        {
+            _navMeshAgent.SetDestination(Player.position);
+            _travelling = true;
+        }
+        else
+        {
+            if (_patrolPoints != null)
+            {
+                Vector3 targetVector = _patrolPoints[_currentPatrolIndex].transform.position;
+                _navMeshAgent.SetDestination(targetVector);
+                _travelling = true;
+            }
+        }
+        /**
         if (_patrolPoints != null)
         {
             Vector3 targetVector = _patrolPoints[_currentPatrolIndex].transform.position;
             _navMeshAgent.SetDestination(targetVector);
             _travelling = true;
         }
+        **/
     }
 
 
@@ -151,29 +179,12 @@ public class NPCSimplePatrol : MonoBehaviour
 
         if (_patrolForward)
         {
-            /**
-            _currentPatrolIndex++;
-
-            if(_currentPatrolIndex >= _patrolPoints.Count)
-            {
-                _currentPatrolIndex = 0;
-            }
-            */
             //this checks to see how many points there are left and if it has finished the cycle and if it has it resets the cycle
 
             _currentPatrolIndex = (_currentPatrolIndex + 1) % _patrolPoints.Count;
         }
         else
         {
-            /**
-            _currentPatrolIndex--;
-
-            if(_currentPatrolIndex < 0)
-            {
-                _currentPatrolIndex = _patrolPoints.Count - 1;
-            }
-            */
-
             if(--_currentPatrolIndex < 0)
             {
                 _currentPatrolIndex = _patrolPoints.Count - 1;

@@ -925,7 +925,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _patrolWaiting: 0
   _totalWaitTime: 5
-  _switchProbability: 0.2
+  _switchProbability: 0.8
   _patrolPoints:
   - {fileID: 1684012797}
   - {fileID: 1661730857}
@@ -933,9 +933,10 @@ MonoBehaviour:
   - {fileID: 1549618946}
   - {fileID: 1591546289}
   chaserTime: 500
-  decreaseSpeed: 20
+  decreaseSpeed: 50
   Player: {fileID: 461998561}
   fovcheck: 0
+  chaserIsTrue: 0
 --- !u!114 &1231454163
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1042,7 +1043,7 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 0
+  m_StoppingDistance: 1
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1

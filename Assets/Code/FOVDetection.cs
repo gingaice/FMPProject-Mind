@@ -79,6 +79,7 @@ public class FOVDetection : MonoBehaviour
                         if (Physics.Raycast(ray, out hit, maxRadius))
                         {
                             if (hit.transform == target)
+                            Debug.Log ("player hit");
                                 return true;
                         }
                     }
