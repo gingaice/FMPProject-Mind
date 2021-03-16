@@ -32,11 +32,11 @@ public class NPCSimplePatrol : MonoBehaviour
     private static int _rotationSpeed = 40;
 
     public float chaserTime = 500f;
+    public float chasedTimer = 100;
     public float decreaseSpeed = 50f;
     public Transform Player;
     public bool fovcheck = false;
-
-    public bool chaserIsTrue;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -118,28 +118,43 @@ public class NPCSimplePatrol : MonoBehaviour
             {
                 _navMeshAgent.destination = Player.transform.position;
                 chaserTime -= Time.deltaTime * decreaseSpeed;
+
             }
         }
         else
         {
+
             fovcheck = false;
         }
     }
 
-    
+    /**
     private void Chasing()
     {
+        chasedTimer += Time.deltaTime * decreaseSpeed;
         _patrolWaiting = false;
         //_navMeshAgent.destination = Player.transform.position;
+        if(chasedTimer >= 5f)
+        {
+            fovcheck = false;
+        }
     }
-    
+    **/
     
 
     private void SetDestination()
     {
         if (chaserTime <= 460)
         {
-            Chasing();
+            //Chasing();
+            chasedTimer += Time.deltaTime * decreaseSpeed;
+
+            _patrolWaiting = false;
+
+            if (chasedTimer >= 100f)
+            {
+                fovcheck = false;
+            }
         }
         else
         {
