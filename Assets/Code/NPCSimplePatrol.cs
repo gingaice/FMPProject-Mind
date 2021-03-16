@@ -116,6 +116,7 @@ public class NPCSimplePatrol : MonoBehaviour
 
             if(fovcheck == true)
             {
+                _navMeshAgent.destination = Player.transform.position;
                 chaserTime -= Time.deltaTime * decreaseSpeed;
             }
         }
@@ -125,28 +126,20 @@ public class NPCSimplePatrol : MonoBehaviour
         }
     }
 
-    /**
+    
     private void Chasing()
     {
-        //_patrolWaiting = false;
-            if(chaserTime <= 460)
-            {
-                _patrolWaiting = false;
-
-                chaserIsTrue = true;
-                //_navMeshAgent.SetDestination(Player.position);
-            }
-
+        _patrolWaiting = false;
+        //_navMeshAgent.destination = Player.transform.position;
     }
-    **/
+    
     
 
     private void SetDestination()
     {
         if (chaserTime <= 460)
         {
-            _navMeshAgent.SetDestination(Player.position);
-            _travelling = true;
+            Chasing();
         }
         else
         {

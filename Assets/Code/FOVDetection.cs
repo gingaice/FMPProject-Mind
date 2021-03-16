@@ -19,13 +19,6 @@ public class FOVDetection : MonoBehaviour
 
     public bool checker = false;
 
-    public void Start()
-    {
-
-    }
-
-
-
     private void OnDrawGizmos()
     {
         //this is to get how far the ai can see
@@ -86,7 +79,6 @@ public class FOVDetection : MonoBehaviour
                 }
             }
         }
-
 
         return false;
     }
