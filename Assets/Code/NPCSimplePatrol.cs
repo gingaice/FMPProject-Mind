@@ -123,7 +123,7 @@ public class NPCSimplePatrol : MonoBehaviour
         }
         else
         {
-
+            ChangePatrolPoint();
             fovcheck = false;
         }
     }
