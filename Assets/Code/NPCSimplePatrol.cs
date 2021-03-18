@@ -105,12 +105,6 @@ public class NPCSimplePatrol : MonoBehaviour
 
         if (FOVDetection.lockOn == true)
         {
-            /**
-            if(isChasing == true)
-            {
-                StartCoroutine(Chasing());
-            }
-            **/
 
             fovcheck = true;
 
@@ -126,6 +120,11 @@ public class NPCSimplePatrol : MonoBehaviour
             //SetDestination();
             ChangePatrolPoint();
             fovcheck = false;
+        }
+
+        if(fovcheck == false)
+        {
+            chaserTime = 500;
         }
     }
 
@@ -150,12 +149,14 @@ public class NPCSimplePatrol : MonoBehaviour
             //Chasing();
             chasedTimer += Time.deltaTime * decreaseSpeed;
 
-            _patrolWaiting = false;
-
+            //_patrolWaiting = false;
+            
             if (chasedTimer >= 100f)
             {
                 fovcheck = false;
+                _patrolWaiting = false;
             }
+            
         }
         else
         {
