@@ -151,11 +151,13 @@ public class NPCSimplePatrol : MonoBehaviour
 
             //_patrolWaiting = false;
             
+            
             if (chasedTimer >= 100f)
             {
                 fovcheck = false;
                 _patrolWaiting = false;
             }
+            
             
         }
         else
