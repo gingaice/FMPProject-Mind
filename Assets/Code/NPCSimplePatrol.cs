@@ -11,7 +11,7 @@ public class NPCSimplePatrol : MonoBehaviour
 
     //the total time we wait at each node
     [SerializeField]
-    float _totalWaitTime = 5f;
+    float _totalWaitTime = 3f;
 
     //the probability of switching direction
     [SerializeField]
@@ -29,10 +29,10 @@ public class NPCSimplePatrol : MonoBehaviour
     bool _patrolForward;
     float _waitTimer;
 
-    private static int _rotationSpeed = 40;
+    private static int _rotationSpeed = 80;
 
     public float chaserTime = 500f;
-    public float chasedTimer = 100;
+    public float chasedTimer = 0;
     public float decreaseSpeed = 50f;
     public Transform Player;
     public bool fovcheck = false;
@@ -124,6 +124,7 @@ public class NPCSimplePatrol : MonoBehaviour
 
         if(fovcheck == false)
         {
+            //chaserTime += Time.deltaTime * decreaseSpeed;
             chaserTime = 500;
         }
     }
@@ -151,12 +152,13 @@ public class NPCSimplePatrol : MonoBehaviour
 
             //_patrolWaiting = false;
             
-            
+            /**
             if (chasedTimer >= 100f)
             {
                 fovcheck = false;
                 _patrolWaiting = false;
             }
+            **/
             
             
         }
