@@ -117,6 +117,7 @@ public class NPCSimplePatrol : MonoBehaviour
         }
         else
         {
+            //_waiting = true;
             //SetDestination();
             ChangePatrolPoint();
             fovcheck = false;
