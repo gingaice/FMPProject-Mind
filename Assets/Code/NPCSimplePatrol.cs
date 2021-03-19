@@ -15,7 +15,7 @@ public class NPCSimplePatrol : MonoBehaviour
 
     //the probability of switching direction
     [SerializeField]
-    float _switchProbability = 0.5f;
+    float _switchProbability = 0.2f;
 
     //the list of all patrol nodes to visit
     [SerializeField]
@@ -32,7 +32,7 @@ public class NPCSimplePatrol : MonoBehaviour
     private static int _rotationSpeed = 80;
 
     public float chaserTime = 500f;
-    public float chasedTimer = 0;
+    //public float chasedTimer = 0;
     public float decreaseSpeed = 50f;
     public Transform Player;
     public bool fovcheck = false;
@@ -107,13 +107,14 @@ public class NPCSimplePatrol : MonoBehaviour
         {
 
             fovcheck = true;
-
+            /**
             if(fovcheck == true)
             {
                 _navMeshAgent.destination = Player.transform.position;
                 chaserTime -= Time.deltaTime * decreaseSpeed;
 
             }
+            **/
         }
         else
         {
@@ -123,7 +124,13 @@ public class NPCSimplePatrol : MonoBehaviour
             fovcheck = false;
         }
 
-        if(fovcheck == false)
+        if (fovcheck == true)
+        {
+            _navMeshAgent.destination = Player.transform.position;
+            chaserTime -= Time.deltaTime * decreaseSpeed;
+
+        }
+        if (fovcheck == false)
         {
             //chaserTime += Time.deltaTime * decreaseSpeed;
             chaserTime = 500;
@@ -149,7 +156,7 @@ public class NPCSimplePatrol : MonoBehaviour
         if (chaserTime <= 460)
         {
             //Chasing();
-            chasedTimer += Time.deltaTime * decreaseSpeed;
+            //chasedTimer += Time.deltaTime * decreaseSpeed;
 
             //_patrolWaiting = false;
             
