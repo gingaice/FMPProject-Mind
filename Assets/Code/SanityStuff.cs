@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class SanityStuff : MonoBehaviour
 {
     public float damageInsanity = 50;
-    public float Mhealth = 1000;
+    private float Mhealth = 500;
     public bool inSight;
 
     //time for timers and health

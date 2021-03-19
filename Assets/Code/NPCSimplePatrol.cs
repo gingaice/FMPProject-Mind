@@ -93,10 +93,11 @@ public class NPCSimplePatrol : MonoBehaviour
             if (_waitTimer >= _totalWaitTime)
             {
                 _waiting = false;
-                
+                _patrolWaiting = false;
+
                 ChangePatrolPoint();
                 SetDestination();
-                _patrolWaiting = false;
+                //_patrolWaiting = false;
                 //Chasing();
             }
 
@@ -128,6 +129,7 @@ public class NPCSimplePatrol : MonoBehaviour
         {
             _navMeshAgent.destination = Player.transform.position;
             chaserTime -= Time.deltaTime * decreaseSpeed;
+            _patrolWaiting = true;
 
         }
         if (fovcheck == false)
