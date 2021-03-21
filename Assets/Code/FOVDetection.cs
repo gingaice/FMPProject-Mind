@@ -74,9 +74,10 @@ public class FOVDetection : MonoBehaviour
                             if (hit.transform == target)
                             {
                                 Debug.Log("player hit");
+                                return true;
                             }
                             //Debug.Log("player hit");
-                                return true;
+                                //return true;
                         }
                     }
                 }
