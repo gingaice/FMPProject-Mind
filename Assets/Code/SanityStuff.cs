@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class SanityStuff : MonoBehaviour
 {
     public float damageInsanity = 50;
-    private float Mhealth = 500;
+    public float Mhealth = 500;
     public bool inSight;
 
     //time for timers and health
@@ -61,7 +61,7 @@ public class SanityStuff : MonoBehaviour
 
         if (Mhealth <= 0)
         {
-
+            Debug.Log("Player Died");
             Application.Quit();
         }
     }
