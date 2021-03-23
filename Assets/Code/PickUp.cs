@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PickUp : MonoBehaviour
 {
+    /**
     // Start is called before the first frame update
     void Start()
     {
@@ -20,7 +21,7 @@ public class PickUp : MonoBehaviour
 
         if(CardMovement = true)
         {
-            card.position = 
+            
         }
     }
     
@@ -29,11 +30,12 @@ public class PickUp : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.E))
         {
-            if (other.name == "player") ;
+            if (other.name == "player");
             {
                 card.position = cardMap.position;
-                Safe = true;
+                DoorCan = true;
             }
         }
     }
+    **/
 }
