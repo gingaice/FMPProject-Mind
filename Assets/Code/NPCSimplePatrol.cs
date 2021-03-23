@@ -108,6 +108,7 @@ public class NPCSimplePatrol : MonoBehaviour
         {
 
             fovcheck = true;
+
             /**
             if(fovcheck == true)
             {
