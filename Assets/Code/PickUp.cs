@@ -4,7 +4,11 @@ using UnityEngine;
 
 public class PickUp : MonoBehaviour
 {
-    /**
+    public transform card;
+    public transform cardMovement;
+    public transform cardMap;
+    public bool DoorCan = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -16,12 +20,12 @@ public class PickUp : MonoBehaviour
     {
         if(Gate.GateCheck = true)
         {
-            CardMovement = true;
+            cardMovement = true;
         }
 
-        if(CardMovement = true)
+        if(cardMovement = true)
         {
-            
+            card.position = //random spot
         }
     }
     
@@ -37,5 +41,5 @@ public class PickUp : MonoBehaviour
             }
         }
     }
-    **/
+    
 }
