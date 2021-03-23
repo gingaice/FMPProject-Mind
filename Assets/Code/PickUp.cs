@@ -13,6 +13,27 @@ public class PickUp : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(Gate.GateCheck = true)
+        {
+            CardMovement = true;
+        }
+
+        if(CardMovement = true)
+        {
+            card.position = 
+        }
+    }
+    
+    void OnTriggerEnter(Collider other)
+    {
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            if (other.name == "player") ;
+            {
+                card.position = cardMap.position;
+                Safe = true;
+            }
+        }
     }
 }
