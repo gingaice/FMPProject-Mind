@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class PickUp : MonoBehaviour
 {
-    public transform card;
-    public transform cardMovement;
-    public transform cardMap;
+    public Transform card;
+    public bool cardMovement;
+    public Transform cardMap;
     public bool DoorCan = false;
 
     // Start is called before the first frame update
@@ -18,14 +18,14 @@ public class PickUp : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Gate.GateCheck = true)
+        if(Gate.GateCheck == true)
         {
             cardMovement = true;
         }
 
-        if(cardMovement = true)
+        if(cardMovement == true)
         {
-            card.position = //random spot
+            //card.position = //random spot
         }
     }
     
@@ -34,12 +34,11 @@ public class PickUp : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.E))
         {
-            if (other.name == "player");
+            if (other.name == "player")
             {
                 card.position = cardMap.position;
                 DoorCan = true;
             }
         }
     }
-    
 }
