@@ -9,6 +9,9 @@ public class PickUp : MonoBehaviour
     public Transform cardMap;
     public bool DoorCan = false;
 
+    public Transform _cardPlacement1;
+    public float cardPlacement1 = 0.2f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +28,7 @@ public class PickUp : MonoBehaviour
 
         if(cardMovement == true)
         {
+            Spawn();
             //card.position = //random spot
         }
     }
@@ -34,11 +38,20 @@ public class PickUp : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.E))
         {
-            if (other.name == "player")
+            if (other.name == "Card")
             {
                 card.position = cardMap.position;
                 DoorCan = true;
             }
         }
+    }
+
+    private void Spawn()
+    {
+        if (UnityEngine.Random.Range(0f, 1f) == cardPlacement1)
+        {
+            card.position = _cardPlacement1.position;
+        }
+        //Vector3 targetVector = _patrolPoints[_currentPatrolIndex].transform.position;
     }
 }
