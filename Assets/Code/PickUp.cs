@@ -48,7 +48,7 @@ public class PickUp : MonoBehaviour
 
     private void Spawn()
     {
-        if (UnityEngine.Random.Range(0f, 1f) == cardPlacement1)
+        if (UnityEngine.Random.Range(0f, 1f) <= cardPlacement1)
         {
             card.position = _cardPlacement1.position;
         }
