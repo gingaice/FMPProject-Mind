@@ -12,8 +12,7 @@ public class PickUp : MonoBehaviour
     public Transform _cardPlacement1;
     public float cardPlacement1 = 0.2f;
 
-    public bool _inZone = false;
-
+    public bool _inColl = false;
 
     public Animator door1anim;
     public Animator door2anim;
@@ -21,16 +20,23 @@ public class PickUp : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        door1anim.enabled = false;
+        door2anim.enabled = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(_inZone == true)
+        if(_inColl == true)
         {
-            card.position = cardMap.position;
-            DoorCan = true;
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                card.position = cardMap.position;
+                //DoorCan = true;
+            }
+
+            //card.position = cardMap.position;
+            //DoorCan = true;
         }
 
         if(DoorCan == true)
@@ -53,7 +59,11 @@ public class PickUp : MonoBehaviour
     
     void OnTriggerEnter(Collider other)
     {
-        _inZone = true;
+        if (other.CompareTag("Cards"))
+        {
+            _inColl = true;
+        }
+        //_inColl = true;
 
         /**
         if (Input.GetKeyDown(KeyCode.E))
