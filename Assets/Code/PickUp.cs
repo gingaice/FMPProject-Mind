@@ -32,18 +32,20 @@ public class PickUp : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.E))
             {
                 card.position = cardMap.position;
-                //DoorCan = true;
+                DoorCan = true;
             }
 
             //card.position = cardMap.position;
             //DoorCan = true;
         }
 
+        /**
         if(DoorCan == true)
         {
             door1anim.enabled = true;
             door2anim.enabled = true;
         }
+        **/
 
         if(Gate.GateCheck == true)
         {
@@ -62,6 +64,16 @@ public class PickUp : MonoBehaviour
         if (other.CompareTag("Cards"))
         {
             _inColl = true;
+            //DoorCan = true;
+        }
+
+        if (other.CompareTag("Gate"))
+        {
+            if (DoorCan == true)
+            {
+                door1anim.enabled = true;
+                door2anim.enabled = true;
+            }
         }
         //_inColl = true;
 
@@ -72,6 +84,23 @@ public class PickUp : MonoBehaviour
             {
                 card.position = cardMap.position;
                 DoorCan = true;
+            }
+        }
+        **/
+    }
+    void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Cards"))
+        {
+            _inColl = false;
+        }
+        /**
+        if (other.CompareTag("Gate"))
+        {
+            if(DoorCan == true)
+            {
+                door1anim.enabled = true;
+                door2anim.enabled = true;
             }
         }
         **/
