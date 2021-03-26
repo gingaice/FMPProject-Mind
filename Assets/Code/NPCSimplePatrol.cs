@@ -131,7 +131,6 @@ public class NPCSimplePatrol : MonoBehaviour
             _navMeshAgent.destination = Player.transform.position;
             chaserTime -= Time.deltaTime * decreaseSpeed;
             _patrolWaiting = true;
-
         }
         if (fovcheck == false)
         {
@@ -175,6 +174,7 @@ public class NPCSimplePatrol : MonoBehaviour
         }
         else
         {
+            chaserTime = 500;
             if (_patrolPoints != null)
             {
                 Vector3 targetVector = _patrolPoints[_currentPatrolIndex].transform.position;
