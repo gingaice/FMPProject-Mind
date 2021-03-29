@@ -9,13 +9,20 @@ public class PickUp : MonoBehaviour
     public Transform cardMap;
     public bool DoorCan = false;
 
-    public Transform _cardPlacement1;
-    public float cardPlacement1 = 0.2f;
+    public Transform _cardPlacement;
+    public float cardPlacement = 0.2f;
 
     public bool _inColl = false;
 
     public Animator door1anim;
     public Animator door2anim;
+
+    [SerializeField]
+    //List<SpawnPoints> _Spawnpoints;
+
+    public Transform[] _Spawnpoints;
+
+    public int _currentPlacementSpawnIndex;
 
     public string key = "e";
 
@@ -36,6 +43,7 @@ public class PickUp : MonoBehaviour
     {
         if(_inColl == true)
         {
+
             /**
             _PickupTimer = 0;
             _PickupTimer += Time.deltaTime * _PickupTimerUp;
@@ -116,6 +124,7 @@ public class PickUp : MonoBehaviour
             Spawn();
             //card.position = //random spot
         }
+        Vector3 targetVector = _Spawnpoints[_currentPlacementSpawnIndex].transform.position;
     }
     
     void OnTriggerEnter(Collider other)
@@ -165,10 +174,32 @@ public class PickUp : MonoBehaviour
 
     private void Spawn()
     {
-        if (UnityEngine.Random.Range(0f, 1f) <= cardPlacement1)
+        if (UnityEngine.Random.Range(0f, 1f) == cardPlacement)
         {
-            card.position = _cardPlacement1.position;
+            if(cardPlacement >= 0.9)
+            {
+                //_currentPatrolIndex = (_currentPatrolIndex + 1) % _patrolPoints.Count;
+                //_currentPlacementSpawnIndex = (_currentPlacementSpawnIndex + 1) % _Spawnpoints;
+                
+            }
         }
         //Vector3 targetVector = _patrolPoints[_currentPatrolIndex].transform.position;
     }
 }
+
+/**
+private List<GameObject> pollenSpores = new List<GameObject>();
+private void Spawn()
+{
+    // Initialize a pool of spawn locations from the full list
+    List<Transform> spawnPool = new List<Transform>(spawnLocations);
+    // Spawn 4 spores
+    for (int i = 0; i < 4; ++i)
+    {
+        // Get next random spawn location from pool and then remove it from the list
+        Transform spawnLocation = spawnPool[Random.Range(0, spawnPool.Count)];
+        spawnPool.Remove(spawnLocation);
+        pollenSpores.Add(Instantiate(prefabToSpawn[i], spawnLocation.position, Quaternion.identity));
+    }
+}
+**/
