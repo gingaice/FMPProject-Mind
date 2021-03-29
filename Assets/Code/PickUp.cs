@@ -21,7 +21,7 @@ public class PickUp : MonoBehaviour
 
     public float _timer = 0;
     public float _startTimer = 0;
-    public float _holdTime = 1;
+    public float _holdTime = 3;
     public bool held = false;
 
     // Start is called before the first frame update
@@ -74,10 +74,10 @@ public class PickUp : MonoBehaviour
             }
 
             // For single effects. Remove if not needed
-            if (Input.GetKeyUp(key))
-            {
-                held = false;
-            }
+            //if (Input.GetKeyUp(key))
+            //{
+                //held = false;
+            //}
 
             /**
             if (Input.GetKeyDown(KeyCode.E))
@@ -96,8 +96,6 @@ public class PickUp : MonoBehaviour
                 _startTimer = 0;
             }
             **/
-            //card.position = cardMap.position;
-            //DoorCan = true;
         }
 
         /**
