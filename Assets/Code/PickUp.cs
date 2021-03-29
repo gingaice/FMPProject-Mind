@@ -132,7 +132,7 @@ public class PickUp : MonoBehaviour
         {
             if (DoorCan == true)
             {
-                if(held = true)
+                if(held == true)
                 {
                     door1anim.enabled = true;
                     door2anim.enabled = true;
