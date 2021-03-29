@@ -17,6 +17,13 @@ public class PickUp : MonoBehaviour
     public Animator door1anim;
     public Animator door2anim;
 
+    public string key = "e";
+
+    public float _timer = 0;
+    public float _startTimer = 0;
+    public float _holdTime = 1;
+    public bool held = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,12 +36,66 @@ public class PickUp : MonoBehaviour
     {
         if(_inColl == true)
         {
-            if (Input.GetKeyDown(KeyCode.E))
+            /**
+            _PickupTimer = 0;
+            _PickupTimer += Time.deltaTime * _PickupTimerUp;
+
+            if(_PickupTimer >= 10)
             {
-                card.position = cardMap.position;
-                DoorCan = true;
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    card.position = cardMap.position;
+                    DoorCan = true;
+                    _PickupTimer = 0;
+                }
+            }
+            **/
+
+            // Starts the timer from when the key is pressed
+            if (Input.GetKeyDown(key))
+            {
+                _startTimer = Time.time;
+                _timer = _startTimer;
             }
 
+            // Adds time onto the timer so long as the key is pressed
+            if (Input.GetKey(key) && held == false)
+            {
+                _timer += Time.deltaTime;
+
+                // Once the timer float has added on the required holdTime, changes the bool (for a single trigger), and calls the function
+                if (_timer > (_startTimer + _holdTime))
+                {
+                    held = true;
+                    ButtonHeld();
+                    card.position = cardMap.position;
+                    DoorCan = true;
+                }
+            }
+
+            // For single effects. Remove if not needed
+            if (Input.GetKeyUp(key))
+            {
+                held = false;
+            }
+
+            /**
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                _startTimer = Time.time;
+                _timer = _startTimer;
+
+                if (_startTimer + _HoldTime >= Time.time)
+                {
+                    card.position = cardMap.position;
+                    DoorCan = true;
+                }
+            }
+            else
+            {
+                _startTimer = 0;
+            }
+            **/
             //card.position = cardMap.position;
             //DoorCan = true;
         }
@@ -71,22 +132,15 @@ public class PickUp : MonoBehaviour
         {
             if (DoorCan == true)
             {
-                door1anim.enabled = true;
-                door2anim.enabled = true;
+                if(held = true)
+                {
+                    door1anim.enabled = true;
+                    door2anim.enabled = true;
+                }
+
             }
         }
         //_inColl = true;
-
-        /**
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            if (other.name == "Card")
-            {
-                card.position = cardMap.position;
-                DoorCan = true;
-            }
-        }
-        **/
     }
     void OnTriggerExit(Collider other)
     {
@@ -104,6 +158,11 @@ public class PickUp : MonoBehaviour
             }
         }
         **/
+    }
+
+    void ButtonHeld()
+    {
+        Debug.Log("held for " + _holdTime + " seconds");
     }
 
     private void Spawn()

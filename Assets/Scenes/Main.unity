@@ -1425,7 +1425,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1231454162
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1852,7 +1852,7 @@ GameObject:
   - component: {fileID: 1619298056}
   - component: {fileID: 1619298060}
   m_Layer: 0
-  m_Name: player
+  m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1969,6 +1969,11 @@ MonoBehaviour:
   _inColl: 0
   door1anim: {fileID: 8776197634258693713}
   door2anim: {fileID: 4432310144110590156}
+  key: e
+  _timer: 0
+  _startTimer: 0
+  _holdTime: 1
+  held: 0
 --- !u!1 &1661730855
 GameObject:
   m_ObjectHideFlags: 0
