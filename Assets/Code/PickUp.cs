@@ -9,8 +9,16 @@ public class PickUp : MonoBehaviour
     public Transform cardMap;
     public bool DoorCan = false;
 
-    public Transform _cardPlacement;
-    //public float cardPlacement = 0.2f;
+    //public Transform _cardPlacement;
+    public float cardPlacement;
+
+    public Transform SpawnPoint1;
+    public Transform SpawnPoint2;
+    public Transform SpawnPoint3;
+    public Transform SpawnPoint4;
+    public Transform SpawnPoint5;
+
+    public bool stopper = false;
 
     public bool _inColl = false;
 
@@ -31,8 +39,8 @@ public class PickUp : MonoBehaviour
     public float _holdTime = 3;
     public bool held = false;
 
-    private int rand;
-    private spawnPointData templates;
+    //private int rand;
+    //private spawnPointData templates;
 
     // Start is called before the first frame update
     void Start()
@@ -40,7 +48,7 @@ public class PickUp : MonoBehaviour
         door1anim.enabled = false;
         door2anim.enabled = false;
 
-        templates = GameObject.FindGameObjectWithTag("CardSpawns").GetComponent<spawnPointData>();
+        //templates = GameObject.FindGameObjectWithTag("CardSpawns").GetComponent<spawnPointData>();
     }
 
     // Update is called once per frame
@@ -48,22 +56,6 @@ public class PickUp : MonoBehaviour
     {
         if(_inColl == true)
         {
-
-            /**
-            _PickupTimer = 0;
-            _PickupTimer += Time.deltaTime * _PickupTimerUp;
-
-            if(_PickupTimer >= 10)
-            {
-                if (Input.GetKeyDown(KeyCode.E))
-                {
-                    card.position = cardMap.position;
-                    DoorCan = true;
-                    _PickupTimer = 0;
-                }
-            }
-            **/
-
             // Starts the timer from when the key is pressed
             if (Input.GetKeyDown(key))
             {
@@ -85,41 +77,9 @@ public class PickUp : MonoBehaviour
                     DoorCan = true;
                 }
             }
-
-            // For single effects. Remove if not needed
-            //if (Input.GetKeyUp(key))
-            //{
-                //held = false;
-            //}
-
-            /**
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                _startTimer = Time.time;
-                _timer = _startTimer;
-
-                if (_startTimer + _HoldTime >= Time.time)
-                {
-                    card.position = cardMap.position;
-                    DoorCan = true;
-                }
-            }
-            else
-            {
-                _startTimer = 0;
-            }
-            **/
         }
 
-        /**
-        if(DoorCan == true)
-        {
-            door1anim.enabled = true;
-            door2anim.enabled = true;
-        }
-        **/
-
-        if(Gate.GateCheck == true)
+        if (Gate.GateCheck == true)
         {
             cardMovement = true;
         }
@@ -127,9 +87,17 @@ public class PickUp : MonoBehaviour
         if(cardMovement == true)
         {
             Spawn();
+            stopper = true;
             //card.position = //random spot
         }
         //Vector3 targetVector = _Spawnpoints[_currentPlacementSpawnIndex].transform.position;
+
+        cardPlacement = Random.Range(0, 10);
+
+        if(stopper == true)
+        {
+            Spawn();
+        }
     }
     
     void OnTriggerEnter(Collider other)
@@ -179,20 +147,28 @@ public class PickUp : MonoBehaviour
 
     private void Spawn()
     {
-        /**
-        if (UnityEngine.Random.Range(0f, 1f) == cardPlacement)
+        Debug.Log("number is" + cardPlacement);
+
+        if (cardPlacement >= 8)
         {
-            if(cardPlacement >= 0.9)
-            {
-                card.position = _cardPlacement.position;
-                //_currentPatrolIndex = (_currentPatrolIndex + 1) % _patrolPoints.Count;
-                //_currentPlacementSpawnIndex = (_currentPlacementSpawnIndex + 1) % _Spawnpoints;
-            }
+            card.position = SpawnPoint1.position;
         }
-        **/
-        card.position = _cardPlacement.position;
-        //rand = Random.Range(0, templates.randomSpawn.Length);
-        //Instantiate(templates.randomSpawn[rand], transform.position, Quaternion.identity);
+        else if (cardPlacement >= 6)
+        {
+            card.position = SpawnPoint2.position;
+        }
+        else if (cardPlacement >= 4)
+        {
+            card.position = SpawnPoint3.position;
+        }
+        else if (cardPlacement >= 2)
+        {
+            card.position = SpawnPoint4.position;
+        }
+        else if (cardPlacement >= 0)
+        {
+            card.position = SpawnPoint5.position;
+        }
 
     }
 }
@@ -212,4 +188,29 @@ private void Spawn()
         pollenSpores.Add(Instantiate(prefabToSpawn[i], spawnLocation.position, Quaternion.identity));
     }
 }
-**/
+        /**
+        if (UnityEngine.Random.Range(0f, 1f) == cardPlacement)
+        {
+            if(cardPlacement >= 0.9)
+            {
+                card.position = _cardPlacement.position;
+                //_currentPatrolIndex = (_currentPatrolIndex + 1) % _patrolPoints.Count;
+                //_currentPlacementSpawnIndex = (_currentPlacementSpawnIndex + 1) % _Spawnpoints;
+            }
+        }
+
+        rand = Random.Range(0, templates.randomSpawn.Length);
+        Instantiate(templates.randomSpawn[rand], transform.position, Quaternion.identity);
+        card.transform.position = spawnPointData[RandomSpawn].position;
+
+                if (test == 1)
+        {
+            rand = Random.Range(0, templates.randomSpawn.Length);
+            Instantiate(templates.randomSpawn[rand], transform.position, Quaternion.identity);
+        }
+
+                rand = Random.Range(0, templates.randomSpawn.Length);
+        Instantiate(templates.randomSpawn[rand], transform.position, Quaternion.identity);
+
+        card.position = _cardPlacement.position;
+        **/
