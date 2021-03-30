@@ -10,19 +10,19 @@ public class PickUp : MonoBehaviour
     public bool DoorCan = false;
 
     public Transform _cardPlacement;
-    public float cardPlacement = 0.2f;
+    //public float cardPlacement = 0.2f;
 
     public bool _inColl = false;
 
     public Animator door1anim;
     public Animator door2anim;
 
-    [SerializeField]
+    //[SerializeField]
     //List<SpawnPoints> _Spawnpoints;
 
-    public Transform[] _Spawnpoints;
+    //public GameObject[] _Spawnpoints;
 
-    public int _currentPlacementSpawnIndex;
+    //public int _currentPlacementSpawnIndex;
 
     public string key = "e";
 
@@ -31,11 +31,16 @@ public class PickUp : MonoBehaviour
     public float _holdTime = 3;
     public bool held = false;
 
+    private int rand;
+    private spawnPointData templates;
+
     // Start is called before the first frame update
     void Start()
     {
         door1anim.enabled = false;
         door2anim.enabled = false;
+
+        templates = GameObject.FindGameObjectWithTag("CardSpawns").GetComponent<spawnPointData>();
     }
 
     // Update is called once per frame
@@ -124,7 +129,7 @@ public class PickUp : MonoBehaviour
             Spawn();
             //card.position = //random spot
         }
-        Vector3 targetVector = _Spawnpoints[_currentPlacementSpawnIndex].transform.position;
+        //Vector3 targetVector = _Spawnpoints[_currentPlacementSpawnIndex].transform.position;
     }
     
     void OnTriggerEnter(Collider other)
@@ -174,16 +179,21 @@ public class PickUp : MonoBehaviour
 
     private void Spawn()
     {
+        /**
         if (UnityEngine.Random.Range(0f, 1f) == cardPlacement)
         {
             if(cardPlacement >= 0.9)
             {
+                card.position = _cardPlacement.position;
                 //_currentPatrolIndex = (_currentPatrolIndex + 1) % _patrolPoints.Count;
                 //_currentPlacementSpawnIndex = (_currentPlacementSpawnIndex + 1) % _Spawnpoints;
-                
             }
         }
-        //Vector3 targetVector = _patrolPoints[_currentPatrolIndex].transform.position;
+        **/
+        card.position = _cardPlacement.position;
+        //rand = Random.Range(0, templates.randomSpawn.Length);
+        //Instantiate(templates.randomSpawn[rand], transform.position, Quaternion.identity);
+
     }
 }
 

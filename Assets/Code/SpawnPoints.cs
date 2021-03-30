@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SpawnPoints : MonoBehaviour
 {
+
     [SerializeField]
     protected float debugDrawRadius = 1.0f;
 
