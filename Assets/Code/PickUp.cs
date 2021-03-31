@@ -94,10 +94,8 @@ public class PickUp : MonoBehaviour
 
         cardPlacement = Random.Range(0, 10);
 
-        if(stopper == true)
-        {
-            Spawn();
-        }
+
+        
     }
     
     void OnTriggerEnter(Collider other)
@@ -145,31 +143,42 @@ public class PickUp : MonoBehaviour
         Debug.Log("held for " + _holdTime + " seconds");
     }
 
-    private void Spawn()
+
+    public bool Spawn()
     {
         Debug.Log("number is" + cardPlacement);
 
         if (cardPlacement >= 8)
         {
             card.position = SpawnPoint1.position;
+            return true;
+
         }
         else if (cardPlacement >= 6)
         {
             card.position = SpawnPoint2.position;
+            return true;
+
         }
         else if (cardPlacement >= 4)
         {
             card.position = SpawnPoint3.position;
+            return true;
+
         }
         else if (cardPlacement >= 2)
         {
             card.position = SpawnPoint4.position;
+            return true;
+
         }
         else if (cardPlacement >= 0)
         {
             card.position = SpawnPoint5.position;
-        }
+            return true;
 
+        }
+        return false;
     }
 }
 
@@ -214,3 +223,31 @@ private void Spawn()
 
         card.position = _cardPlacement.position;
         **/
+/**
+private void Spawn()
+{
+    Debug.Log("number is" + cardPlacement);
+
+    if (cardPlacement >= 8)
+    {
+        card.position = SpawnPoint1.position;
+    }
+    else if (cardPlacement >= 6)
+    {
+        card.position = SpawnPoint2.position;
+    }
+    else if (cardPlacement >= 4)
+    {
+        card.position = SpawnPoint3.position;
+    }
+    else if (cardPlacement >= 2)
+    {
+        card.position = SpawnPoint4.position;
+    }
+    else if (cardPlacement >= 0)
+    {
+        card.position = SpawnPoint5.position;
+    }
+
+}
+**/
