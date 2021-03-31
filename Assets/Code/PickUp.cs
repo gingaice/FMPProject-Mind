@@ -11,14 +11,18 @@ public class PickUp : MonoBehaviour
 
     //public Transform _cardPlacement;
     public float cardPlacement;
+    public float one = 10f;
 
     public Transform SpawnPoint1;
+    public bool cardfreeze1 = false;
     public Transform SpawnPoint2;
+    public bool cardfreeze2 = false;
     public Transform SpawnPoint3;
+    public bool cardfreeze3 = false;
     public Transform SpawnPoint4;
+    public bool cardfreeze4 = false;
     public Transform SpawnPoint5;
-
-    public bool stopper = false;
+    public bool cardfreeze5 = false;
 
     public bool _inColl = false;
 
@@ -87,17 +91,39 @@ public class PickUp : MonoBehaviour
         if(cardMovement == true)
         {
             Spawn();
-            stopper = true;
-            //card.position = //random spot
+            //cardPlacement = Random.Range(0, 10);
         }
         //Vector3 targetVector = _Spawnpoints[_currentPlacementSpawnIndex].transform.position;
+        cardPlacement += Time.deltaTime * one;
 
-        cardPlacement = Random.Range(0, 10);
+        if (cardPlacement >= 10f)
+        {
+            cardPlacement = 0;
+        }
 
+        if (cardfreeze1 == true)
+        {
+            cardPlacement = 9;
+        }
+        else if (cardfreeze2 == true)
+        {
+            cardPlacement = 7;
+        }
+        else if (cardfreeze3 == true)
+        {
+            cardPlacement = 5;
+        }
+        else if (cardfreeze4 == true)
+        {
+            cardPlacement = 3;
+        }
+        else if (cardfreeze5 == true)
+        {
+            cardPlacement = 1;
+        }
 
-        
     }
-    
+
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Cards"))
@@ -151,33 +177,62 @@ public class PickUp : MonoBehaviour
         if (cardPlacement >= 8)
         {
             card.position = SpawnPoint1.position;
+            cardfreeze1 = true;
             return true;
-
         }
         else if (cardPlacement >= 6)
         {
             card.position = SpawnPoint2.position;
+            cardfreeze2 = true;
             return true;
-
         }
         else if (cardPlacement >= 4)
         {
             card.position = SpawnPoint3.position;
+            cardfreeze3 = true;
             return true;
-
         }
         else if (cardPlacement >= 2)
         {
             card.position = SpawnPoint4.position;
+            cardfreeze4 = true;
             return true;
-
         }
         else if (cardPlacement >= 0)
         {
             card.position = SpawnPoint5.position;
+            cardfreeze5 = true;
             return true;
-
         }
+        /**
+        if (cardfreeze1 == true)
+        {
+            cardPlacement = 9;
+        }
+        else if (cardfreeze1 == true)
+        {
+            cardPlacement = 7;
+        }
+        else if (cardfreeze1 == true)
+        {
+            cardPlacement = 5;
+        }
+        else if (cardfreeze1 == true)
+        {
+            cardPlacement = 3;
+        }
+        else if (cardfreeze1 == true)
+        {
+            cardPlacement = 1;
+        }
+
+
+        
+        if (stopper == false)
+        {
+            cardPlacement = Random.Range(0, 10);
+        }
+        **/
         return false;
     }
 }

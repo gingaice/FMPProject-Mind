@@ -1132,7 +1132,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 461998557}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -52, y: 1.025, z: 1.36}
+  m_LocalPosition: {x: 1.3, y: 1.025, z: 1.36}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1619298055}
@@ -1784,7 +1784,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 4
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -2100,12 +2100,17 @@ MonoBehaviour:
   cardMap: {fileID: 365482230}
   DoorCan: 0
   cardPlacement: 0
+  one: 10
   SpawnPoint1: {fileID: 278491264}
+  cardfreeze1: 0
   SpawnPoint2: {fileID: 104309252}
+  cardfreeze2: 0
   SpawnPoint3: {fileID: 717358101}
+  cardfreeze3: 0
   SpawnPoint4: {fileID: 1996726293}
+  cardfreeze4: 0
   SpawnPoint5: {fileID: 719522472}
-  stopper: 0
+  cardfreeze5: 0
   _inColl: 0
   door1anim: {fileID: 8776197634258693713}
   door2anim: {fileID: 4432310144110590156}
