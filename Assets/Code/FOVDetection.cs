@@ -25,7 +25,7 @@ public class FOVDetection : MonoBehaviour
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, maxRadius);
 
-        //this is for the angle that the AI will be able to see from    go to 4:20 for explenation 
+        //this is for the angle that the AI will be able to see from                                                                go to 4:20 for explenation 
         Vector3 fovLine1 = Quaternion.AngleAxis(maxAngle, transform.up) * transform.forward * maxRadius;
         Vector3 fovLine2 = Quaternion.AngleAxis(-maxAngle, transform.up) * transform.forward * maxRadius;
 
