@@ -166,6 +166,7 @@ public class PickUp : MonoBehaviour
 
     void ButtonHeld()
     {
+        card.position = cardMap.position;
         Debug.Log("held for " + _holdTime + " seconds");
     }
 
@@ -204,35 +205,6 @@ public class PickUp : MonoBehaviour
             cardfreeze5 = true;
             return true;
         }
-        /**
-        if (cardfreeze1 == true)
-        {
-            cardPlacement = 9;
-        }
-        else if (cardfreeze1 == true)
-        {
-            cardPlacement = 7;
-        }
-        else if (cardfreeze1 == true)
-        {
-            cardPlacement = 5;
-        }
-        else if (cardfreeze1 == true)
-        {
-            cardPlacement = 3;
-        }
-        else if (cardfreeze1 == true)
-        {
-            cardPlacement = 1;
-        }
-
-
-        
-        if (stopper == false)
-        {
-            cardPlacement = Random.Range(0, 10);
-        }
-        **/
         return false;
     }
 }
@@ -305,4 +277,32 @@ private void Spawn()
     }
 
 }
+        if (cardfreeze1 == true)
+        {
+            cardPlacement = 9;
+        }
+        else if (cardfreeze1 == true)
+        {
+            cardPlacement = 7;
+        }
+        else if (cardfreeze1 == true)
+        {
+            cardPlacement = 5;
+        }
+        else if (cardfreeze1 == true)
+        {
+            cardPlacement = 3;
+        }
+        else if (cardfreeze1 == true)
+        {
+            cardPlacement = 1;
+        }
+
+
+        
+        if (stopper == false)
+        {
+            cardPlacement = Random.Range(0, 10);
+        }
+
 **/
