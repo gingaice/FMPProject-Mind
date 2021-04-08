@@ -126,3 +126,59 @@ System memory in use after: 58.4 MB.
 Unloading 5 unused Assets to reduce memory usage. Loaded Objects now: 1587.
 Total: 2.376100 ms (FindLiveObjects: 0.309400 ms CreateObjectMapping: 0.044100 ms MarkObjects: 1.944800 ms  DeleteObjects: 0.076500 ms)
 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001089 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.26 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.871 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.23 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1132 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 58.4 MB.
+System memory in use after: 58.5 MB.
+
+Unloading 5 unused Assets to reduce memory usage. Loaded Objects now: 1590.
+Total: 1.708800 ms (FindLiveObjects: 0.174600 ms CreateObjectMapping: 0.031200 ms MarkObjects: 1.441300 ms  DeleteObjects: 0.060500 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 2657.029099 seconds.
+  path: Assets/Scenes/Settings.unity
+  artifactKey: Guid(a20071a941237244d934af78e74e59b4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/Settings.unity using Guid(a20071a941237244d934af78e74e59b4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3ec727d658ca9f5140186dd1ce0352c6') in 0.026304 seconds
+  Import took 0.028426 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 1.573304 seconds.
+  path: Assets/Scenes/Main.unity
+  artifactKey: Guid(364b3c767838d42419ec3faa57db3108) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/Main.unity using Guid(364b3c767838d42419ec3faa57db3108) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '18e7fe20ba7fba5d851439f36bc27e26') in 0.003809 seconds
+  Import took 0.006010 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 152.542099 seconds.
+  path: Assets/Scenes/Main.unity
+  artifactKey: Guid(364b3c767838d42419ec3faa57db3108) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/Main.unity using Guid(364b3c767838d42419ec3faa57db3108) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '642ad574361129f37948058768b34cac') in 0.004067 seconds
+  Import took 0.024158 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 61.846068 seconds.
+  path: Assets/Code/SanityStuff.cs
+  artifactKey: Guid(e0f129c6da4563141b63610d44fb3c09) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Code/SanityStuff.cs using Guid(e0f129c6da4563141b63610d44fb3c09) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '488a31600ea1e834e7a424e3d0051a1f') in 0.150860 seconds
+  Import took 0.207358 seconds .
+
+AssetImportWorkerClient::OnTransportError - code=2 error=End of file
