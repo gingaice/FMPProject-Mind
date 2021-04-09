@@ -9,6 +9,8 @@ public class SanityStuff : MonoBehaviour
     public float Mhealth = 500;
     public bool inSight;
 
+    public static bool healthReset;
+
     //time for timers and health
     public float regenTime;
     public bool regenTrue;
@@ -18,6 +20,7 @@ public class SanityStuff : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Time.timeScale = 1;
         menu.enabled = false;
     }
 
@@ -61,10 +64,17 @@ public class SanityStuff : MonoBehaviour
 
         if (Mhealth <= 0)
         {
+            Time.timeScale = 0;
             Debug.Log("Player Died");
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
             menu.enabled = true;
+            Mhealth = 500;
+        }
+
+        if (healthReset == true)
+        {
+            Mhealth = 500;
         }
     }
 }

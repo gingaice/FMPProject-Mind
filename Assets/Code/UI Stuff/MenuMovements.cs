@@ -44,13 +44,6 @@ public class MenuMovements : MonoBehaviour
         Cursor.visible = false;
         Time.timeScale = 1;
     }
-    public void restart()
-    {
-        Menu.enabled = false;
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-        Time.timeScale = 1;
-    }
     public void CloseGame()
     {
         Application.Quit();
