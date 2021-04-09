@@ -25,14 +25,17 @@ public class MenuMovements : MonoBehaviour
     public void loadGame()
     {
         SceneManager.LoadScene("Main");
+        Time.timeScale = 1;
     }
     public void loadMainMenu()
     {
         SceneManager.LoadScene("StartMenu");
+        Time.timeScale = 1;
     }
     public void loadSettingsMenu()
     {
         SceneManager.LoadScene("Settings");
+        Time.timeScale = 1;
     }
     public void loadResume()
     {
@@ -41,7 +44,13 @@ public class MenuMovements : MonoBehaviour
         Cursor.visible = false;
         Time.timeScale = 1;
     }
-
+    public void restart()
+    {
+        Menu.enabled = false;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        Time.timeScale = 1;
+    }
     public void CloseGame()
     {
         Application.Quit();

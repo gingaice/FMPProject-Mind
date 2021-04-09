@@ -13,12 +13,12 @@ public class SanityStuff : MonoBehaviour
     public float regenTime;
     public bool regenTrue;
 
-
+    public Canvas menu;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        menu.enabled = false;
     }
 
     // Update is called once per frame
@@ -62,7 +62,9 @@ public class SanityStuff : MonoBehaviour
         if (Mhealth <= 0)
         {
             Debug.Log("Player Died");
-            Application.Quit();
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            menu.enabled = true;
         }
     }
 }
