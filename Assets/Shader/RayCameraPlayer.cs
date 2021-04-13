@@ -16,7 +16,7 @@ public class RayCameraPlayer : MonoBehaviour
         //Calculate the length
         float length = Vector3.Distance(player.transform.position, transform.position);
         //Draw the ray in the debug
-        Debug.DrawRay(transform.position, direction * length, Color.red);
+        Debug.DrawRay(transform.position, direction * length, Color.white);
         //The first object hit reference
         RaycastHit currentHit;
         //Cast the ray and report the firt object hit filtering by "Wall" layer mask

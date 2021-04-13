@@ -947,7 +947,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!195 &308962056
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -986,8 +986,8 @@ MonoBehaviour:
   _totalWaitTime: 3
   _switchProbability: 0.2
   _patrolPoints:
-  - {fileID: 1591546289}
   - {fileID: 1549618946}
+  - {fileID: 1356791081}
   - {fileID: 1684012797}
   chaserTime: 500
   decreaseSpeed: 50

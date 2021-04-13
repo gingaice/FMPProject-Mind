@@ -1,9 +1,9 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class NPCSimplePatrol : MonoBehaviour
+public class NPC1SimpleMove : MonoBehaviour
 {
     //Dictates whther the agent waits on each node
     [SerializeField]
@@ -36,7 +36,7 @@ public class NPCSimplePatrol : MonoBehaviour
     public float decreaseSpeed = 50f;
     public Transform Player;
     public bool fovcheck = false;
-    
+
 
     // Start is called before the first frame update
     void Start()
@@ -51,7 +51,7 @@ public class NPCSimplePatrol : MonoBehaviour
         else
         {
             //this is to find the patrol points that i will be putting into the scene for the ai to go too
-            if(_patrolPoints != null && _patrolPoints.Count >= 2)
+            if (_patrolPoints != null && _patrolPoints.Count >= 2)
             {
                 _currentPatrolIndex = 0;
                 SetDestination();
@@ -67,7 +67,7 @@ public class NPCSimplePatrol : MonoBehaviour
     public void Update()
     {
         //checking to see if were close to the destination that we want to go too
-        if(_travelling && _navMeshAgent.remainingDistance <= 1.5f)
+        if (_travelling && _navMeshAgent.remainingDistance <= 1.5f)
         {
             _travelling = false;
             _patrolWaiting = true;
@@ -104,7 +104,7 @@ public class NPCSimplePatrol : MonoBehaviour
             transform.Rotate(0, _rotationSpeed * Time.deltaTime, 0);
         }
 
-        if (FOVDetection.lockOn == true)
+        if (FOVDetection.lockOn2 == true)
         {
 
             fovcheck = true;
@@ -151,7 +151,7 @@ public class NPCSimplePatrol : MonoBehaviour
         }
     }
     **/
-    
+
 
     private void SetDestination()
     {
@@ -161,7 +161,7 @@ public class NPCSimplePatrol : MonoBehaviour
             //chasedTimer += Time.deltaTime * decreaseSpeed;
 
             //_patrolWaiting = false;
-            
+
             /**
             if (chasedTimer >= 100f)
             {
@@ -169,8 +169,8 @@ public class NPCSimplePatrol : MonoBehaviour
                 _patrolWaiting = false;
             }
             **/
-            
-            
+
+
         }
         else
         {
@@ -210,7 +210,7 @@ public class NPCSimplePatrol : MonoBehaviour
         }
         else
         {
-            if(--_currentPatrolIndex < 0)
+            if (--_currentPatrolIndex < 0)
             {
                 _currentPatrolIndex = _patrolPoints.Count - 1;
             }

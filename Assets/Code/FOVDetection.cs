@@ -13,7 +13,10 @@ public class FOVDetection : MonoBehaviour
 
     //the lock on stuff
     [SerializeField]
-    public static bool lockOn = false;
+    public static bool lockOn1 = false;
+
+    [SerializeField]
+    public static bool lockOn2 = false;
 
     //public int chasers = 300;
 
@@ -93,12 +96,18 @@ public class FOVDetection : MonoBehaviour
 
         if (isInFOV == true)
         {
-            lockOn = true;
+            lockOn1 = true;
+            lockOn2 = true;
+
+
             checker = true;
         }
         else
         {
-            lockOn = false;
+            lockOn1 = false;
+            lockOn2 = false;
+
+
             checker = false;
         }
         /**

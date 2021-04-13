@@ -27,7 +27,7 @@ public class SanityStuff : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(FOVDetection.lockOn == true)
+        if(FOVDetection.lockOn1 == true)
         {
             Mhealth -= Time.deltaTime * damageInsanity;
             inSight = true;
