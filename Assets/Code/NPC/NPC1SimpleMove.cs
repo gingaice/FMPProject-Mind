@@ -22,7 +22,7 @@ public class NPC1SimpleMove : MonoBehaviour
     List<Waypoint> _patrolPoints;
 
     //private variables for base behaviour
-    NavMeshAgent _navMeshAgent1;
+    NavMeshAgent _navMeshAgent;
     int _currentPatrolIndex;
     bool _travelling;
     bool _waiting;
@@ -32,24 +32,109 @@ public class NPC1SimpleMove : MonoBehaviour
     private static int _rotationSpeed = 80;
 
     public float chaserTime = 500f;
-    //public float chasedTimer = 0;
     public float decreaseSpeed = 50f;
     public Transform Player;
+
     public bool fovcheck = false;
 
+    
+    //public Transform player;
 
+    public float maxAngle;
+    public float maxRadius;
+
+    private bool isInFOV = false;
+
+    //the lock on stuff
+    //[SerializeField]
+    //public static bool lockOn1 = false;
+
+    //[SerializeField]
+    //public static bool lockOn2 = false;
+
+    //public int chasers = 300;
+
+    public bool checker = false;
+
+    private void OnDrawGizmos()
+    {
+        //this is to get how far the ai can see
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, maxRadius);
+
+        //this is for the angle that the AI will be able to see from                                                                go to 4:20 for explenation 
+        Vector3 fovLine1 = Quaternion.AngleAxis(maxAngle, transform.up) * transform.forward * maxRadius;
+        Vector3 fovLine2 = Quaternion.AngleAxis(-maxAngle, transform.up) * transform.forward * maxRadius;
+
+        //this needs two draw rays as its for both lines of the fov
+        Gizmos.color = Color.blue;
+        Gizmos.DrawRay(transform.position, fovLine1);
+        Gizmos.DrawRay(transform.position, fovLine2);
+
+        if (!isInFOV)
+            //to draw a line between the ai and the player----- the red bit means to say if the player is in and green if out
+            Gizmos.color = Color.green;
+        else
+            Gizmos.color = Color.red;
+        Gizmos.DrawRay(transform.position, (Player.position - transform.position).normalized * maxRadius);
+
+        Gizmos.color = Color.black;
+        Gizmos.DrawRay(transform.position, transform.forward * maxRadius);
+
+    }
+
+    public static bool inFOV(Transform checkingObject, Transform target, float maxAngle, float maxRadius)
+    {
+        // this checks every object in the radius of the Ai
+        Collider[] overlaps = new Collider[50];
+        int count = Physics.OverlapSphereNonAlloc(checkingObject.position, maxRadius, overlaps);
+
+        for (int i = 0; i < count + 1; i++)
+        {
+            if (overlaps[i] != null)
+            {
+                if (overlaps[i].transform == target)
+                {
+                    Vector3 directionBetween = (target.position - checkingObject.position).normalized;
+                    directionBetween.y *= 0;
+
+                    float angle = Vector3.Angle(checkingObject.forward, directionBetween);
+
+                    if (angle <= maxAngle)
+                    {
+                        //uses raycasting to check if the player is behind an object or not
+                        Ray ray = new Ray(checkingObject.position, target.position - checkingObject.position);
+                        RaycastHit hit;
+
+                        if (Physics.Raycast(ray, out hit, maxRadius))
+                        {
+                            if (hit.transform == target)
+                            {
+                                Debug.Log("player hit");
+                                return true;
+                            }
+                            //Debug.Log("player hit");
+                            //return true;
+                        }
+                    }
+                }
+            }
+        }
+        return false;
+    }
     // Start is called before the first frame update
     void Start()
     {
         //this is too find the navmesh agent on the object that you put it on
-        _navMeshAgent1 = this.GetComponent<NavMeshAgent>();
+        _navMeshAgent = this.GetComponent<NavMeshAgent>();
 
-        if (_navMeshAgent1 == null)
+        if (_navMeshAgent == null)
         {
             Debug.LogError("The nav mesh agent component is not attached to " + gameObject.name);
         }
         else
         {
+            Debug.Log("the don is here " + gameObject.name);
             //this is to find the patrol points that i will be putting into the scene for the ai to go too
             if (_patrolPoints != null && _patrolPoints.Count >= 2)
             {
@@ -67,7 +152,7 @@ public class NPC1SimpleMove : MonoBehaviour
     public void Update()
     {
         //checking to see if were close to the destination that we want to go too
-        if (_travelling && _navMeshAgent1.remainingDistance <= 1.5f)
+        if (_travelling && _navMeshAgent.remainingDistance <= 1.5f)
         {
             _travelling = false;
             _patrolWaiting = true;
@@ -103,74 +188,59 @@ public class NPC1SimpleMove : MonoBehaviour
 
             transform.Rotate(0, _rotationSpeed * Time.deltaTime, 0);
         }
-
-        if (FOVDetection.lockOn2 == true)
+        //to make sure that the ai can see currently not working with more than one
+        if (checker == true)
         {
-
             fovcheck = true;
-
-            /**
-            if(fovcheck == true)
-            {
-                _navMeshAgent.destination = Player.transform.position;
-                chaserTime -= Time.deltaTime * decreaseSpeed;
-
-            }
-            **/
+            ChangePatrolPoint();
         }
         else
         {
-            //_waiting = true;
-            //SetDestination();
-            ChangePatrolPoint();
+            //ChangePatrolPoint();
             fovcheck = false;
         }
 
-        if (fovcheck == true)
+        isInFOV = inFOV(transform, Player, maxAngle, maxRadius);
+
+        if (isInFOV == true)
         {
-            _navMeshAgent1.destination = Player.transform.position;
-            chaserTime -= Time.deltaTime * decreaseSpeed;
-            _patrolWaiting = true;
+            checker = true;
         }
-        if (fovcheck == false)
+        else
         {
-            //chaserTime += Time.deltaTime * decreaseSpeed;
-            chaserTime = 500;
+            checker = false;
         }
+
+        //if (fovcheck == true)
+        //{
+        //chasePlayer();
+        /**
+        _navMeshAgent.destination = Player.transform.position;
+        chaserTime -= Time.deltaTime * decreaseSpeed;
+        _patrolWaiting = true;
+        **/
+        //}
+        //else
+        //{
+        //chaserTime += Time.deltaTime * decreaseSpeed;
+        //chaserTime = 500;
+        //}
+
+
     }
-
     /**
-    private void Chasing()
+    private void chasePlayer()
     {
-        chasedTimer += Time.deltaTime * decreaseSpeed;
-        _patrolWaiting = false;
-        //_navMeshAgent.destination = Player.transform.position;
-        if(chasedTimer >= 5f)
-        {
-            fovcheck = false;
-        }
+        _travelling = true;
+        _navMeshAgent.destination = Player.transform.position;
+        chaserTime -= Time.deltaTime * decreaseSpeed;
     }
     **/
-
-
     private void SetDestination()
     {
-        if (chaserTime <= 460)
+        if (chaserTime <= 490)
         {
-            //Chasing();
-            //chasedTimer += Time.deltaTime * decreaseSpeed;
-
-            //_patrolWaiting = false;
-
-            /**
-            if (chasedTimer >= 100f)
-            {
-                fovcheck = false;
-                _patrolWaiting = false;
-            }
-            **/
-
-
+            //_waiting = true;
         }
         else
         {
@@ -178,24 +248,48 @@ public class NPC1SimpleMove : MonoBehaviour
             if (_patrolPoints != null)
             {
                 Vector3 targetVector = _patrolPoints[_currentPatrolIndex].transform.position;
-                _navMeshAgent1.SetDestination(targetVector);
+                _navMeshAgent.SetDestination(targetVector);
                 _travelling = true;
             }
         }
-        /**
-        if (_patrolPoints != null)
-        {
-            Vector3 targetVector = _patrolPoints[_currentPatrolIndex].transform.position;
-            _navMeshAgent.SetDestination(targetVector);
-            _travelling = true;
-        }
-        **/
     }
 
 
     // this selects a new patrol point in the list but also has a small chanc for it to go a different way#
     private void ChangePatrolPoint()
     {
+        if (fovcheck == true)
+        {
+            //_navMeshAgent.destination = Player.transform.position;
+            Vector3 targetDon = Player.transform.position;
+            _navMeshAgent.SetDestination(targetDon);
+
+            chaserTime -= Time.deltaTime * decreaseSpeed;
+        }
+        else
+        {
+            chaserTime = 500;
+            //this uses unity random featuere to make the npc go either forwards or backwards
+            if (UnityEngine.Random.Range(0f, 1f) <= _switchProbability)
+            {
+                _patrolForward = !_patrolForward;
+            }
+
+            if (_patrolForward)
+            {
+                //this checks to see how many points there are left and if it has finished the cycle and if it has it resets the cycle
+
+                _currentPatrolIndex = (_currentPatrolIndex + 1) % _patrolPoints.Count;
+            }
+            else
+            {
+                if (--_currentPatrolIndex < 0)
+                {
+                    _currentPatrolIndex = _patrolPoints.Count - 1;
+                }
+            }
+        }
+        /**
         //this uses unity random featuere to make the npc go either forwards or backwards
         if (UnityEngine.Random.Range(0f, 1f) <= _switchProbability)
         {
@@ -210,10 +304,11 @@ public class NPC1SimpleMove : MonoBehaviour
         }
         else
         {
-            if (--_currentPatrolIndex < 0)
+            if(--_currentPatrolIndex < 0)
             {
                 _currentPatrolIndex = _patrolPoints.Count - 1;
             }
         }
+        **/
     }
 }

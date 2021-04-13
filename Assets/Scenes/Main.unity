@@ -135,7 +135,6 @@ GameObject:
   - component: {fileID: 12832875}
   - component: {fileID: 12832874}
   - component: {fileID: 12832873}
-  - component: {fileID: 12832872}
   - component: {fileID: 12832871}
   - component: {fileID: 12832870}
   m_Layer: 0
@@ -144,7 +143,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!195 &12832870
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -176,7 +175,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 12832869}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c071171406f7891428271c4219f7ac97, type: 3}
+  m_Script: {fileID: 11500000, guid: e909da65fee7df14abe0287e996b5161, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _patrolWaiting: 0
@@ -185,26 +184,12 @@ MonoBehaviour:
   _patrolPoints:
   - {fileID: 1591546289}
   - {fileID: 1254463028}
-  - {fileID: 1549618946}
   chaserTime: 500
   decreaseSpeed: 50
   Player: {fileID: 461998561}
   fovcheck: 0
---- !u!114 &12832872
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 12832869}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 28e268bc5794fa148bded0118b158042, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 461998561}
   maxAngle: 60
-  maxRadius: 10
+  maxRadius: 8
   checker: 0
 --- !u!65 &12832873
 BoxCollider:
@@ -938,10 +923,9 @@ GameObject:
   - component: {fileID: 308962061}
   - component: {fileID: 308962060}
   - component: {fileID: 308962059}
-  - component: {fileID: 308962058}
-  - component: {fileID: 308962057}
-  - component: {fileID: 308962063}
+  - component: {fileID: 308962064}
   - component: {fileID: 308962056}
+  - component: {fileID: 308962063}
   m_Layer: 0
   m_Name: Ai2
   m_TagString: Untagged
@@ -971,45 +955,6 @@ NavMeshAgent:
   m_BaseOffset: 0.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &308962057
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 308962055}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c071171406f7891428271c4219f7ac97, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _patrolWaiting: 0
-  _totalWaitTime: 3
-  _switchProbability: 0.2
-  _patrolPoints:
-  - {fileID: 1549618946}
-  - {fileID: 1356791081}
-  - {fileID: 1684012797}
-  chaserTime: 500
-  decreaseSpeed: 50
-  Player: {fileID: 461998561}
-  fovcheck: 0
---- !u!114 &308962058
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 308962055}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 28e268bc5794fa148bded0118b158042, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 461998561}
-  maxAngle: 60
-  maxRadius: 10
-  checker: 0
 --- !u!65 &308962059
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1109,6 +1054,35 @@ MonoBehaviour:
   decreaseSpeed: 50
   Player: {fileID: 461998561}
   fovcheck: 0
+  maxAngle: 0
+  maxRadius: 0
+  checker: 0
+--- !u!114 &308962064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 308962055}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e909da65fee7df14abe0287e996b5161, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _patrolWaiting: 0
+  _totalWaitTime: 3
+  _switchProbability: 0.2
+  _patrolPoints:
+  - {fileID: 1549618946}
+  - {fileID: 1356791081}
+  - {fileID: 1684012797}
+  chaserTime: 500
+  decreaseSpeed: 50
+  Player: {fileID: 461998561}
+  fovcheck: 0
+  maxAngle: 60
+  maxRadius: 8
+  checker: 0
 --- !u!1 &324365528
 GameObject:
   m_ObjectHideFlags: 0
@@ -2714,8 +2688,7 @@ GameObject:
   - component: {fileID: 1231454166}
   - component: {fileID: 1231454165}
   - component: {fileID: 1231454164}
-  - component: {fileID: 1231454163}
-  - component: {fileID: 1231454162}
+  - component: {fileID: 1231454169}
   - component: {fileID: 1231454168}
   m_Layer: 0
   m_Name: Ai
@@ -2724,48 +2697,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1231454162
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1231454161}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c071171406f7891428271c4219f7ac97, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _patrolWaiting: 0
-  _totalWaitTime: 3
-  _switchProbability: 0.2
-  _patrolPoints:
-  - {fileID: 1684012797}
-  - {fileID: 1661730857}
-  - {fileID: 1254463028}
-  - {fileID: 1549618946}
-  - {fileID: 1591546289}
-  - {fileID: 1356791081}
-  chaserTime: 500
-  decreaseSpeed: 50
-  Player: {fileID: 461998561}
-  fovcheck: 0
---- !u!114 &1231454163
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1231454161}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 28e268bc5794fa148bded0118b158042, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 461998561}
-  maxAngle: 60
-  maxRadius: 10
-  checker: 0
 --- !u!65 &1231454164
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2864,6 +2795,35 @@ NavMeshAgent:
   m_BaseOffset: 0.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &1231454169
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1231454161}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e909da65fee7df14abe0287e996b5161, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _patrolWaiting: 0
+  _totalWaitTime: 3
+  _switchProbability: 0.2
+  _patrolPoints:
+  - {fileID: 1684012797}
+  - {fileID: 1661730857}
+  - {fileID: 1254463028}
+  - {fileID: 1549618946}
+  - {fileID: 1591546289}
+  - {fileID: 1356791081}
+  chaserTime: 500
+  decreaseSpeed: 50
+  Player: {fileID: 461998561}
+  fovcheck: 0
+  maxAngle: 60
+  maxRadius: 8
+  checker: 0
 --- !u!1 &1254463026
 GameObject:
   m_ObjectHideFlags: 0
@@ -3758,7 +3718,6 @@ GameObject:
   - component: {fileID: 1847227336}
   - component: {fileID: 1847227335}
   - component: {fileID: 1847227334}
-  - component: {fileID: 1847227333}
   - component: {fileID: 1847227332}
   - component: {fileID: 1847227331}
   m_Layer: 0
@@ -3767,7 +3726,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!195 &1847227331
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -3799,35 +3758,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 1847227330}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c071171406f7891428271c4219f7ac97, type: 3}
+  m_Script: {fileID: 11500000, guid: e909da65fee7df14abe0287e996b5161, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _patrolWaiting: 0
   _totalWaitTime: 3
   _switchProbability: 0.2
   _patrolPoints:
-  - {fileID: 1254463028}
   - {fileID: 1661730857}
-  - {fileID: 1684012797}
+  - {fileID: 1549618946}
   chaserTime: 500
   decreaseSpeed: 50
   Player: {fileID: 461998561}
   fovcheck: 0
---- !u!114 &1847227333
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1847227330}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 28e268bc5794fa148bded0118b158042, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 461998561}
   maxAngle: 60
-  maxRadius: 10
+  maxRadius: 8
   checker: 0
 --- !u!65 &1847227334
 BoxCollider:

@@ -32,17 +32,16 @@ public class NPCSimplePatrol : MonoBehaviour
     private static int _rotationSpeed = 80;
 
     public float chaserTime = 500f;
-    //public float chasedTimer = 0;
     public float decreaseSpeed = 50f;
     public Transform Player;
-    public bool fovcheck = false;
+    public bool fovcheck1 = false;
 
 
     // Start is called before the first frame update
     void Start()
     {
         //this is too find the navmesh agent on the object that you put it on
-        _navMeshAgent = GetComponent<NavMeshAgent>();
+        _navMeshAgent = this.GetComponent<NavMeshAgent>();
 
         if (_navMeshAgent == null)
         {
@@ -50,6 +49,7 @@ public class NPCSimplePatrol : MonoBehaviour
         }
         else
         {
+            Debug.Log("the don is here " + gameObject.name);
             //this is to find the patrol points that i will be putting into the scene for the ai to go too
             if(_patrolPoints != null && _patrolPoints.Count >= 2)
             {
@@ -106,35 +106,41 @@ public class NPCSimplePatrol : MonoBehaviour
         //to make sure that the ai can see currently not working with more than one
         if (FOVDetection.lockOn1 == true)
         {
-            fovcheck = true;
+            fovcheck1 = true;
+            ChangePatrolPoint();
         }
         else
         {
-            ChangePatrolPoint();
-            fovcheck = false;
+            //ChangePatrolPoint();
+            fovcheck1 = false;
         }
+        
 
-        if (fovcheck == true)
-        {
-            chasePlayer();
+        //if (fovcheck == true)
+        //{
+            //chasePlayer();
             /**
             _navMeshAgent.destination = Player.transform.position;
             chaserTime -= Time.deltaTime * decreaseSpeed;
             _patrolWaiting = true;
             **/
-        }
-        else
-        {
+        //}
+        //else
+        //{
             //chaserTime += Time.deltaTime * decreaseSpeed;
-            chaserTime = 500;
-        }
-    }    
+            //chaserTime = 500;
+        //}
+
+
+    }
+    /**
     private void chasePlayer()
     {
+        _travelling = true;
         _navMeshAgent.destination = Player.transform.position;
         chaserTime -= Time.deltaTime * decreaseSpeed;
-        _patrolWaiting = true;
     }
+    **/
     private void SetDestination()
     {
         if (chaserTime <= 490)
@@ -157,6 +163,38 @@ public class NPCSimplePatrol : MonoBehaviour
     // this selects a new patrol point in the list but also has a small chanc for it to go a different way#
     private void ChangePatrolPoint()
     {
+        if(fovcheck1 == true)
+        {
+            //_navMeshAgent.destination = Player.transform.position;
+            Vector3 targetDon = Player.transform.position;
+            _navMeshAgent.SetDestination(targetDon);
+
+            chaserTime -= Time.deltaTime * decreaseSpeed;
+        }
+        else
+        {
+            chaserTime = 500;
+            //this uses unity random featuere to make the npc go either forwards or backwards
+            if (UnityEngine.Random.Range(0f, 1f) <= _switchProbability)
+            {
+                _patrolForward = !_patrolForward;
+            }
+
+            if (_patrolForward)
+            {
+                //this checks to see how many points there are left and if it has finished the cycle and if it has it resets the cycle
+
+                _currentPatrolIndex = (_currentPatrolIndex + 1) % _patrolPoints.Count;
+            }
+            else
+            {
+                if (--_currentPatrolIndex < 0)
+                {
+                    _currentPatrolIndex = _patrolPoints.Count - 1;
+                }
+            }
+        }
+        /**
         //this uses unity random featuere to make the npc go either forwards or backwards
         if (UnityEngine.Random.Range(0f, 1f) <= _switchProbability)
         {
@@ -176,5 +214,6 @@ public class NPCSimplePatrol : MonoBehaviour
                 _currentPatrolIndex = _patrolPoints.Count - 1;
             }
         }
+        **/
     }
 }

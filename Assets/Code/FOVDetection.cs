@@ -99,14 +99,12 @@ public class FOVDetection : MonoBehaviour
             lockOn1 = true;
             lockOn2 = true;
 
-
             checker = true;
         }
         else
         {
             lockOn1 = false;
             lockOn2 = false;
-
 
             checker = false;
         }
