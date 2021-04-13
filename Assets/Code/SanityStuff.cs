@@ -22,12 +22,13 @@ public class SanityStuff : MonoBehaviour
     {
         Time.timeScale = 1;
         menu.enabled = false;
+        inSight = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(FOVDetection.lockOn1 == true)
+        if(NPC1SimpleMove.lockOn == true)
         {
             Mhealth -= Time.deltaTime * damageInsanity;
             inSight = true;
@@ -69,7 +70,7 @@ public class SanityStuff : MonoBehaviour
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
             menu.enabled = true;
-            Mhealth = 500;
+            inSight = false;
         }
 
         if (healthReset == true)

@@ -37,24 +37,15 @@ public class NPC1SimpleMove : MonoBehaviour
 
     public bool fovcheck = false;
 
-    
-    //public Transform player;
-
     public float maxAngle;
     public float maxRadius;
 
     private bool isInFOV = false;
 
-    //the lock on stuff
-    //[SerializeField]
-    //public static bool lockOn1 = false;
-
-    //[SerializeField]
-    //public static bool lockOn2 = false;
-
-    //public int chasers = 300;
-
     public bool checker = false;
+
+    [SerializeField]
+    public static bool lockOn = false;
 
     private void OnDrawGizmos()
     {
@@ -260,6 +251,7 @@ public class NPC1SimpleMove : MonoBehaviour
     {
         if (fovcheck == true)
         {
+            lockOn = true;
             //_navMeshAgent.destination = Player.transform.position;
             Vector3 targetDon = Player.transform.position;
             _navMeshAgent.SetDestination(targetDon);
@@ -268,6 +260,7 @@ public class NPC1SimpleMove : MonoBehaviour
         }
         else
         {
+            lockOn = false;
             chaserTime = 500;
             //this uses unity random featuere to make the npc go either forwards or backwards
             if (UnityEngine.Random.Range(0f, 1f) <= _switchProbability)
