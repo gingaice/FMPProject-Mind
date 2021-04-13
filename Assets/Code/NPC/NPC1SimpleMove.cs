@@ -22,7 +22,7 @@ public class NPC1SimpleMove : MonoBehaviour
     List<Waypoint> _patrolPoints;
 
     //private variables for base behaviour
-    NavMeshAgent _navMeshAgent;
+    NavMeshAgent _navMeshAgent1;
     int _currentPatrolIndex;
     bool _travelling;
     bool _waiting;
@@ -42,9 +42,9 @@ public class NPC1SimpleMove : MonoBehaviour
     void Start()
     {
         //this is too find the navmesh agent on the object that you put it on
-        _navMeshAgent = this.GetComponent<NavMeshAgent>();
+        _navMeshAgent1 = this.GetComponent<NavMeshAgent>();
 
-        if (_navMeshAgent == null)
+        if (_navMeshAgent1 == null)
         {
             Debug.LogError("The nav mesh agent component is not attached to " + gameObject.name);
         }
@@ -67,7 +67,7 @@ public class NPC1SimpleMove : MonoBehaviour
     public void Update()
     {
         //checking to see if were close to the destination that we want to go too
-        if (_travelling && _navMeshAgent.remainingDistance <= 1.5f)
+        if (_travelling && _navMeshAgent1.remainingDistance <= 1.5f)
         {
             _travelling = false;
             _patrolWaiting = true;
@@ -128,7 +128,7 @@ public class NPC1SimpleMove : MonoBehaviour
 
         if (fovcheck == true)
         {
-            _navMeshAgent.destination = Player.transform.position;
+            _navMeshAgent1.destination = Player.transform.position;
             chaserTime -= Time.deltaTime * decreaseSpeed;
             _patrolWaiting = true;
         }
@@ -178,7 +178,7 @@ public class NPC1SimpleMove : MonoBehaviour
             if (_patrolPoints != null)
             {
                 Vector3 targetVector = _patrolPoints[_currentPatrolIndex].transform.position;
-                _navMeshAgent.SetDestination(targetVector);
+                _navMeshAgent1.SetDestination(targetVector);
                 _travelling = true;
             }
         }

@@ -42,7 +42,7 @@ public class NPCSimplePatrol : MonoBehaviour
     void Start()
     {
         //this is too find the navmesh agent on the object that you put it on
-        _navMeshAgent = this.GetComponent<NavMeshAgent>();
+        _navMeshAgent = GetComponent<NavMeshAgent>();
 
         if (_navMeshAgent == null)
         {
@@ -116,23 +116,30 @@ public class NPCSimplePatrol : MonoBehaviour
 
         if (fovcheck == true)
         {
+            chasePlayer();
+            /**
             _navMeshAgent.destination = Player.transform.position;
             chaserTime -= Time.deltaTime * decreaseSpeed;
             _patrolWaiting = true;
+            **/
         }
-        if (fovcheck == false)
+        else
         {
             //chaserTime += Time.deltaTime * decreaseSpeed;
             chaserTime = 500;
         }
     }    
-
+    private void chasePlayer()
+    {
+        _navMeshAgent.destination = Player.transform.position;
+        chaserTime -= Time.deltaTime * decreaseSpeed;
+        _patrolWaiting = true;
+    }
     private void SetDestination()
     {
-        if (chaserTime <= 20)
+        if (chaserTime <= 490)
         {
-            //_navMeshAgent.destination = Player.transform.position;
-            _waiting = true;
+            //_waiting = true;
         }
         else
         {
