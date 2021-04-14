@@ -9,8 +9,6 @@ public class SanityStuff : MonoBehaviour
     public float Mhealth = 500;
     public bool inSight;
 
-    public static bool healthReset;
-
     //time for timers and health
     public float regenTime;
     public bool regenTrue;
@@ -73,9 +71,10 @@ public class SanityStuff : MonoBehaviour
             inSight = false;
         }
 
-        if (healthReset == true)
+        if (menu.enabled == true)
         {
             Mhealth = 500;
+            inSight = false;
         }
     }
 }
