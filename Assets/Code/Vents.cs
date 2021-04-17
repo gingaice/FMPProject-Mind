@@ -43,7 +43,7 @@ public class Vents : MonoBehaviour
             stopperTime += Time.deltaTime * speed;
         }
 
-        if (stopperTime >= 3)
+        if (stopperTime >= 1)
         {
             stopper = false;
         }

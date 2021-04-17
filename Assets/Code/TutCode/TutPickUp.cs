@@ -6,6 +6,13 @@ public class TutPickUp : MonoBehaviour
 {
     public Animator DoubleDoor1;
     public Animator DoubleDoor2;
+
+    public string key = "e";
+
+    public float _timer = 0;
+    public float _startTimer = 0;
+    public float _holdTime = 3;
+    public bool held = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,14 +23,38 @@ public class TutPickUp : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-    }
-    private void OnTriggerEnter(Collider other)
-    {
-        if(other.name == "Player")
+        if (Input.GetKeyDown(key))
+        {
+            _startTimer = Time.time;
+            _timer = _startTimer;
+        }
+
+        // Adds time onto the timer so long as the key is pressed
+        if (Input.GetKey(key) && held == false)
+        {
+            _timer += Time.deltaTime;
+
+            // Once the timer float has added on the required holdTime, changes the bool (for a single trigger), and calls the function
+            if (_timer > (_startTimer + _holdTime))
+            {
+                held = true;
+                ButtonHeld();
+            }
+        }
+
+        if(held == true)
         {
             DoubleDoor1.enabled = true;
             DoubleDoor2.enabled = true;
         }
+
     }
+
+
+    void ButtonHeld()
+    {
+
+        Debug.Log("held for " + _holdTime + " seconds");
+    }
+
 }
