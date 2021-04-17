@@ -15,7 +15,7 @@ public class TutFOVDetection : MonoBehaviour
     public Animator moving;
     //public int chasers = 300;
 
-    public bool checker = false;
+    public static bool checker = false;
 
     private void Start()
     {

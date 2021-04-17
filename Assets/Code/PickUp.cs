@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class PickUp : MonoBehaviour
 {
     public Transform card;
@@ -29,6 +29,9 @@ public class PickUp : MonoBehaviour
     public Animator door1anim;
     public Animator door2anim;
 
+    public Text Carrying;
+    public Text CardSpawned;
+
     //[SerializeField]
     //List<SpawnPoints> _Spawnpoints;
 
@@ -52,6 +55,7 @@ public class PickUp : MonoBehaviour
         door1anim.enabled = false;
         door2anim.enabled = false;
 
+        Carrying.enabled = false;
         //templates = GameObject.FindGameObjectWithTag("CardSpawns").GetComponent<spawnPointData>();
     }
 
@@ -75,12 +79,17 @@ public class PickUp : MonoBehaviour
                 // Once the timer float has added on the required holdTime, changes the bool (for a single trigger), and calls the function
                 if (_timer > (_startTimer + _holdTime))
                 {
+                    Carrying.enabled = true;
                     held = true;
                     ButtonHeld();
                     card.position = cardMap.position;
                     DoorCan = true;
                 }
             }
+        }
+        if (Input.GetKeyUp(key))
+        {
+            Carrying.enabled = false;
         }
 
         if (Gate.GateCheck == true)

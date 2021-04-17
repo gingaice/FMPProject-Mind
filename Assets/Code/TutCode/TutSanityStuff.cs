@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SanityStuff : MonoBehaviour
+public class TutSanityStuff : MonoBehaviour
 {
     public float damageInsanity = 50;
     public float Mhealth = 500;
@@ -14,7 +14,7 @@ public class SanityStuff : MonoBehaviour
     public bool regenTrue;
 
     public Canvas menu;
-    //public AudioSource jojo;
+
     public static bool isSafe;
 
     // Start is called before the first frame update
@@ -23,13 +23,12 @@ public class SanityStuff : MonoBehaviour
         Time.timeScale = 1;
         menu.enabled = false;
         inSight = false;
-        //jojo.enabled = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(NPC1SimpleMove.lockOn == true)
+        if (TutFOVDetection.checker == true)
         {
             Mhealth -= Time.deltaTime * damageInsanity;
             inSight = true;
@@ -39,7 +38,7 @@ public class SanityStuff : MonoBehaviour
             inSight = false;
         }
 
-        if(inSight == true)
+        if (inSight == true)
         {
             regenTime = 0;
             regenTrue = false;
@@ -49,17 +48,17 @@ public class SanityStuff : MonoBehaviour
             regenTrue = true;
         }
 
-        if(regenTrue == true)
+        if (regenTrue == true)
         {
             regenTime += Time.deltaTime * damageInsanity;
         }
 
-        if(regenTime >= 500)
+        if (regenTime >= 500)
         {
             Mhealth += Time.deltaTime * damageInsanity;
         }
 
-        if(Mhealth >= 500)
+        if (Mhealth >= 500)
         {
             Mhealth = 500;
         }
@@ -76,7 +75,6 @@ public class SanityStuff : MonoBehaviour
 
         if (menu.enabled == true)
         {
-            //jojo.enabled = true;
             Mhealth = 500;
             inSight = false;
         }
@@ -84,7 +82,7 @@ public class SanityStuff : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.name == "VisionSafeSpace")
+        if (other.name == "VisionSafeSpace")
         {
             isSafe = true;
         }

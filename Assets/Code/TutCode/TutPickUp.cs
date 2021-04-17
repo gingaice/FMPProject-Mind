@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TutPickUp : MonoBehaviour
 {
@@ -13,11 +14,15 @@ public class TutPickUp : MonoBehaviour
     public float _startTimer = 0;
     public float _holdTime = 3;
     public bool held = false;
+
+    public Text pogup;
     // Start is called before the first frame update
     void Start()
     {
         DoubleDoor1.enabled = false;
         DoubleDoor2.enabled = false;
+
+        pogup.enabled = false;
     }
 
     // Update is called once per frame
@@ -37,6 +42,7 @@ public class TutPickUp : MonoBehaviour
             // Once the timer float has added on the required holdTime, changes the bool (for a single trigger), and calls the function
             if (_timer > (_startTimer + _holdTime))
             {
+                pogup.enabled = true;
                 held = true;
                 ButtonHeld();
             }
@@ -47,7 +53,10 @@ public class TutPickUp : MonoBehaviour
             DoubleDoor1.enabled = true;
             DoubleDoor2.enabled = true;
         }
-
+        if (Input.GetKeyUp(key))
+        {
+            pogup.enabled = false;
+        }
     }
 
 
