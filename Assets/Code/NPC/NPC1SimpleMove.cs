@@ -195,7 +195,11 @@ public class NPC1SimpleMove : MonoBehaviour
 
         if (isInFOV == true)
         {
-            checker = true;
+            if(SanityStuff.isSafe == false)
+            {
+                checker = true;
+            }
+            //checker = true;
         }
         else
         {

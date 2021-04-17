@@ -15,6 +15,8 @@ public class SanityStuff : MonoBehaviour
 
     public Canvas menu;
 
+    public static bool isSafe;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -75,6 +77,21 @@ public class SanityStuff : MonoBehaviour
         {
             Mhealth = 500;
             inSight = false;
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.name == "VisionSafeSpace")
+        {
+            isSafe = true;
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.name == "VisionSafeSpace")
+        {
+            isSafe = false;
         }
     }
 }
