@@ -47,6 +47,8 @@ public class NPC1SimpleMove : MonoBehaviour
     [SerializeField]
     public static bool lockOn = false;
 
+    public Renderer _mark;
+
     private void OnDrawGizmos()
     {
         //this is to get how far the ai can see
@@ -103,6 +105,7 @@ public class NPC1SimpleMove : MonoBehaviour
                             {
                                 Debug.Log("player hit");
                                 return true;
+                                
                             }
                             //Debug.Log("player hit");
                             //return true;
@@ -116,6 +119,9 @@ public class NPC1SimpleMove : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        _mark = GetComponent<Renderer>();
+
+        _mark.enabled = false;
         //this is too find the navmesh agent on the object that you put it on
         _navMeshAgent = this.GetComponent<NavMeshAgent>();
 
