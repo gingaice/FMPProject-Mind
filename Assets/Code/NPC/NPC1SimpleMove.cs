@@ -47,8 +47,6 @@ public class NPC1SimpleMove : MonoBehaviour
     [SerializeField]
     public static bool lockOn = false;
 
-    public Renderer _mark;
-
     private void OnDrawGizmos()
     {
         //this is to get how far the ai can see
@@ -119,9 +117,6 @@ public class NPC1SimpleMove : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _mark = GetComponent<Renderer>();
-
-        _mark.enabled = false;
         //this is too find the navmesh agent on the object that you put it on
         _navMeshAgent = this.GetComponent<NavMeshAgent>();
 
@@ -148,6 +143,16 @@ public class NPC1SimpleMove : MonoBehaviour
     // Update is called once per frame
     public void Update()
     {
+        /**
+        if (NPC1SimpleMove.lockOn == true)
+        {
+            _Ex.enabled = true;
+        }
+        else
+        {
+            _Ex.enabled = false;
+        }
+        **/
         //checking to see if were close to the destination that we want to go too
         if (_travelling && _navMeshAgent.remainingDistance <= 1.5f)
         {
