@@ -33,17 +33,21 @@ public class CharController : MonoBehaviour
 
     private void Move()
     {
-        Vector3 direction = new Vector3(Input.GetAxis("HorizontalKey"), 0, Input.GetAxis("VerticalKey"));
-        Vector3 rightMovement = right * moveSpeed * Time.deltaTime * Input.GetAxis("HorizontalKey");
-        Vector3 upMovement = forward * moveSpeed * Time.deltaTime * Input.GetAxis("VerticalKey");
+        if(SafeSpace.isSafe == false)
+        {
+            Vector3 direction = new Vector3(Input.GetAxis("HorizontalKey"), 0, Input.GetAxis("VerticalKey"));
+            Vector3 rightMovement = right * moveSpeed * Time.deltaTime * Input.GetAxis("HorizontalKey");
+            Vector3 upMovement = forward * moveSpeed * Time.deltaTime * Input.GetAxis("VerticalKey");
 
-        Vector3 heading = Vector3.Normalize(rightMovement + upMovement);
+            Vector3 heading = Vector3.Normalize(rightMovement + upMovement);
 
-        //this makes rotation happen so that its on isometric instead of normal
-        transform.forward = heading;
-        //these two make movement happen
-        transform.position += rightMovement;
-        transform.position += upMovement;
+            //this makes rotation happen so that its on isometric instead of normal
+            transform.forward = heading;
+            //these two make movement happen
+            transform.position += rightMovement;
+            transform.position += upMovement;
+        }
+
     }
 
 }

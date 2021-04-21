@@ -15,7 +15,7 @@ public class SanityStuff : MonoBehaviour
 
     public Canvas menu;
     //public AudioSource jojo;
-    public static bool isSafe;
+    public static bool isSafe = false;
 
     // Start is called before the first frame update
     void Start()
@@ -80,20 +80,24 @@ public class SanityStuff : MonoBehaviour
             Mhealth = 500;
             inSight = false;
         }
-    }
 
+    }
     private void OnTriggerEnter(Collider other)
     {
-        if(other.name == "VisionSafeSpace")
+        if (other.name == "Player")
         {
-            isSafe = true;
+                isSafe = true;
+           
+            //isSafe = true;
         }
     }
     private void OnTriggerExit(Collider other)
     {
-        if (other.name == "VisionSafeSpace")
+        if (other.name == "Player")
         {
-            isSafe = false;
+
+                isSafe = false;
+            
         }
     }
 }
