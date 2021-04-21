@@ -125,7 +125,7 @@ public class NPC1SimpleMove : MonoBehaviour
         }
         else
         {
-            Debug.Log("the don is here " + gameObject.name);
+           
             //this is to find the patrol points that i will be putting into the scene for the ai to go too
             if (_patrolPoints != null && _patrolPoints.Count >= 2)
             {
