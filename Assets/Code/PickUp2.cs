@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PickUp : MonoBehaviour
+public class PickUp2 : MonoBehaviour
 {
     public Transform card;
     public bool cardMovement;
@@ -12,7 +12,7 @@ public class PickUp : MonoBehaviour
 
     //public Transform _cardPlacement;
     public float cardPlacement;
-    public float one = 10f;
+    public float one = 15f;
 
     public Transform SpawnPoint1;
     public bool cardfreeze1 = false;
@@ -24,6 +24,12 @@ public class PickUp : MonoBehaviour
     public bool cardfreeze4 = false;
     public Transform SpawnPoint5;
     public bool cardfreeze5 = false;
+    public Transform SpawnPoint6;
+    public bool cardfreeze6 = false;
+    public Transform SpawnPoint7;
+    public bool cardfreeze7 = false;
+    public Transform SpawnPoint8;
+    public bool cardfreeze8 = false;
 
     public bool _inColl = false;
 
@@ -63,7 +69,7 @@ public class PickUp : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(_inColl == true)
+        if (_inColl == true)
         {
             // Starts the timer from when the key is pressed
             if (Input.GetKeyDown(key))
@@ -93,12 +99,12 @@ public class PickUp : MonoBehaviour
             Carrying.enabled = false;
         }
 
-        if (Gate.GateCheck == true)
+        if (Gate2.GateCheck == true)
         {
             cardMovement = true;
         }
 
-        if(cardMovement == true)
+        if (cardMovement == true)
         {
             Spawn();
             //cardPlacement = Random.Range(0, 10);
@@ -106,32 +112,43 @@ public class PickUp : MonoBehaviour
         //Vector3 targetVector = _Spawnpoints[_currentPlacementSpawnIndex].transform.position;
         cardPlacement += Time.deltaTime * one;
 
-        if (cardPlacement >= 10f)
+        if (cardPlacement >= 15f)
         {
             cardPlacement = 0;
         }
 
         if (cardfreeze1 == true)
         {
-            cardPlacement = 9;
+            cardPlacement = 14;
         }
         else if (cardfreeze2 == true)
         {
-            cardPlacement = 7;
+            cardPlacement = 13;
         }
         else if (cardfreeze3 == true)
         {
-            cardPlacement = 5;
+            cardPlacement = 11;
         }
         else if (cardfreeze4 == true)
         {
-            cardPlacement = 3;
+            cardPlacement = 9;
         }
         else if (cardfreeze5 == true)
         {
+            cardPlacement = 7;
+        }
+        else if (cardfreeze6 == true)
+        {
+            cardPlacement = 5;
+        }
+        else if (cardfreeze7 == true)
+        {
+            cardPlacement = 3;
+        }
+        else if (cardfreeze8 == true)
+        {
             cardPlacement = 1;
         }
-
     }
 
     void OnTriggerEnter(Collider other)
@@ -146,7 +163,7 @@ public class PickUp : MonoBehaviour
         {
             if (DoorCan == true)
             {
-                if(held == true)
+                if (held == true)
                 {
                     door1anim.enabled = true;
                     door2anim.enabled = true;
@@ -185,134 +202,54 @@ public class PickUp : MonoBehaviour
     {
         Debug.Log("number is" + cardPlacement);
 
-        if (cardPlacement >= 8)
+        if (cardPlacement >= 14)
         {
             card.position = SpawnPoint1.position;
             cardfreeze1 = true;
             return true;
         }
-        else if (cardPlacement >= 6)
+        else if (cardPlacement >= 12)
         {
             card.position = SpawnPoint2.position;
             cardfreeze2 = true;
             return true;
         }
-        else if (cardPlacement >= 4)
+        else if (cardPlacement >= 10)
         {
             card.position = SpawnPoint3.position;
             cardfreeze3 = true;
             return true;
         }
-        else if (cardPlacement >= 2)
+        else if(cardPlacement >= 8)
         {
             card.position = SpawnPoint4.position;
             cardfreeze4 = true;
             return true;
         }
-        else if (cardPlacement >= 0)
+        else if (cardPlacement >= 6)
         {
             card.position = SpawnPoint5.position;
             cardfreeze5 = true;
             return true;
         }
+        else if (cardPlacement >= 4)
+        {
+            card.position = SpawnPoint6.position;
+            cardfreeze6 = true;
+            return true;
+        }
+        else if (cardPlacement >= 2)
+        {
+            card.position = SpawnPoint7.position;
+            cardfreeze7 = true;
+            return true;
+        }
+        else if (cardPlacement >= 0)
+        {
+            card.position = SpawnPoint8.position;
+            cardfreeze8 = true;
+            return true;
+        }
         return false;
     }
 }
-
-/**
-private List<GameObject> pollenSpores = new List<GameObject>();
-private void Spawn()
-{
-    // Initialize a pool of spawn locations from the full list
-    List<Transform> spawnPool = new List<Transform>(spawnLocations);
-    // Spawn 4 spores
-    for (int i = 0; i < 4; ++i)
-    {
-        // Get next random spawn location from pool and then remove it from the list
-        Transform spawnLocation = spawnPool[Random.Range(0, spawnPool.Count)];
-        spawnPool.Remove(spawnLocation);
-        pollenSpores.Add(Instantiate(prefabToSpawn[i], spawnLocation.position, Quaternion.identity));
-    }
-}
-        /**
-        if (UnityEngine.Random.Range(0f, 1f) == cardPlacement)
-        {
-            if(cardPlacement >= 0.9)
-            {
-                card.position = _cardPlacement.position;
-                //_currentPatrolIndex = (_currentPatrolIndex + 1) % _patrolPoints.Count;
-                //_currentPlacementSpawnIndex = (_currentPlacementSpawnIndex + 1) % _Spawnpoints;
-            }
-        }
-
-        rand = Random.Range(0, templates.randomSpawn.Length);
-        Instantiate(templates.randomSpawn[rand], transform.position, Quaternion.identity);
-        card.transform.position = spawnPointData[RandomSpawn].position;
-
-                if (test == 1)
-        {
-            rand = Random.Range(0, templates.randomSpawn.Length);
-            Instantiate(templates.randomSpawn[rand], transform.position, Quaternion.identity);
-        }
-
-                rand = Random.Range(0, templates.randomSpawn.Length);
-        Instantiate(templates.randomSpawn[rand], transform.position, Quaternion.identity);
-
-        card.position = _cardPlacement.position;
-        **/
-/**
-private void Spawn()
-{
-    Debug.Log("number is" + cardPlacement);
-
-    if (cardPlacement >= 8)
-    {
-        card.position = SpawnPoint1.position;
-    }
-    else if (cardPlacement >= 6)
-    {
-        card.position = SpawnPoint2.position;
-    }
-    else if (cardPlacement >= 4)
-    {
-        card.position = SpawnPoint3.position;
-    }
-    else if (cardPlacement >= 2)
-    {
-        card.position = SpawnPoint4.position;
-    }
-    else if (cardPlacement >= 0)
-    {
-        card.position = SpawnPoint5.position;
-    }
-
-}
-        if (cardfreeze1 == true)
-        {
-            cardPlacement = 9;
-        }
-        else if (cardfreeze1 == true)
-        {
-            cardPlacement = 7;
-        }
-        else if (cardfreeze1 == true)
-        {
-            cardPlacement = 5;
-        }
-        else if (cardfreeze1 == true)
-        {
-            cardPlacement = 3;
-        }
-        else if (cardfreeze1 == true)
-        {
-            cardPlacement = 1;
-        }
-
-
-        
-        if (stopper == false)
-        {
-            cardPlacement = Random.Range(0, 10);
-        }
-
-**/
