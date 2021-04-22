@@ -27,6 +27,7 @@ public class OutOfSafeSpace : MonoBehaviour
             {
                 _Player.position = _OutOfHiding.position;
                 isSafe = false;
+                inside = false;
             }
         }
     }
@@ -38,15 +39,6 @@ public class OutOfSafeSpace : MonoBehaviour
 
             isSafe = true;
             inside = true;
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.name == "Player")
-        {
-            inside = false;
-            isSafe = false;
         }
     }
 }

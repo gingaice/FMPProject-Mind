@@ -53,6 +53,7 @@ public class TutPickUp : MonoBehaviour
             DoubleDoor1.enabled = true;
             DoubleDoor2.enabled = true;
         }
+
         if (Input.GetKeyUp(key))
         {
             pogup.enabled = false;

@@ -11,14 +11,16 @@ public class TutFOVDetection : MonoBehaviour
 
     private bool isInFOV = false;
 
-    public Animator SingleDoor;
+    public Animator DoubleDoor1;
+    public Animator DoubleDoor2;
     //public int chasers = 300;
 
     public static bool checker = false;
 
     private void Start()
     {
-        SingleDoor.enabled = false;
+        DoubleDoor1.enabled = false;
+        DoubleDoor2.enabled = false;
     }
 
     private void OnDrawGizmos()
@@ -104,7 +106,8 @@ public class TutFOVDetection : MonoBehaviour
 
         if (checker == true)
         {
-            SingleDoor.enabled = true;
+            DoubleDoor1.enabled = true;
+            DoubleDoor2.enabled = true;
         }
     }
 }

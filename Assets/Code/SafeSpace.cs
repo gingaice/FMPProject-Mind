@@ -25,6 +25,7 @@ public class SafeSpace : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.E))
             {
                 _Player.position = _HidingSpot.position;
+                checker = false;
             }
         }
     }
@@ -33,7 +34,7 @@ public class SafeSpace : MonoBehaviour
     {
         if (other.name == "Player")
         {
-                checker = true;
+            checker = true;
         }
     }
 }
