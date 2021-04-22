@@ -33,7 +33,7 @@ public class CharController : MonoBehaviour
 
     private void Move()
     {
-        if(SafeSpace.isSafe == false)
+        if(OutOfSafeSpace.isSafe == false)
         {
             Vector3 direction = new Vector3(Input.GetAxis("HorizontalKey"), 0, Input.GetAxis("VerticalKey"));
             Vector3 rightMovement = right * moveSpeed * Time.deltaTime * Input.GetAxis("HorizontalKey");

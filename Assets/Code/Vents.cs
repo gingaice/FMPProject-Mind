@@ -32,6 +32,7 @@ public class Vents : MonoBehaviour
                 }
             }
         }
+
         if (Input.GetKeyUp(KeyCode.E))
         {
             stopper = true;

@@ -82,6 +82,7 @@ public class SanityStuff : MonoBehaviour
         }
 
     }
+    /**
     private void OnTriggerEnter(Collider other)
     {
         if (other.name == "Player")
@@ -100,4 +101,5 @@ public class SanityStuff : MonoBehaviour
             
         }
     }
+    **/
 }
