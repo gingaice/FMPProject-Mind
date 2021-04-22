@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class TutFOVDetection : MonoBehaviour
 {
@@ -11,16 +12,15 @@ public class TutFOVDetection : MonoBehaviour
 
     private bool isInFOV = false;
 
-    public Animator DoubleDoor1;
-    public Animator DoubleDoor2;
+    public Transform Player;
+    NavMeshAgent _navMeshAgent;
     //public int chasers = 300;
 
     public static bool checker = false;
 
     private void Start()
     {
-        DoubleDoor1.enabled = false;
-        DoubleDoor2.enabled = false;
+        _navMeshAgent = this.GetComponent<NavMeshAgent>();
     }
 
     private void OnDrawGizmos()
@@ -106,8 +106,7 @@ public class TutFOVDetection : MonoBehaviour
 
         if (checker == true)
         {
-            DoubleDoor1.enabled = true;
-            DoubleDoor2.enabled = true;
+            _navMeshAgent.destination = Player.transform.position;
         }
     }
 }

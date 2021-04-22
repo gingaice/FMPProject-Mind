@@ -122,7 +122,7 @@ NavMeshSettings:
     preserveTilesOutsideBounds: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 0}
+  m_NavMeshData: {fileID: 23800000, guid: 5101855c46f0bce4694b0f9cd7d67824, type: 2}
 --- !u!1 &58568647
 GameObject:
   m_ObjectHideFlags: 0
@@ -1614,6 +1614,7 @@ GameObject:
   - component: {fileID: 1147732966}
   - component: {fileID: 1147732965}
   - component: {fileID: 1147732964}
+  - component: {fileID: 1147732969}
   m_Layer: 0
   m_Name: Ai
   m_TagString: Untagged
@@ -1636,8 +1637,7 @@ MonoBehaviour:
   player: {fileID: 1748738594}
   maxAngle: 60
   maxRadius: 10
-  DoubleDoor1: {fileID: 760357757}
-  DoubleDoor2: {fileID: 1336019185}
+  Player: {fileID: 1748738594}
 --- !u!65 &1147732965
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1716,6 +1716,28 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!195 &1147732969
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1147732963}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 1
+  m_BaseOffset: 0.5
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &1162921547
 GameObject:
   m_ObjectHideFlags: 0
@@ -1979,7 +2001,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1214352221}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.064, y: 0.0003, z: 0.003}
+  m_LocalPosition: {x: -0.0214, y: 0.1073, z: 0.003}
   m_LocalScale: {x: 0.9, y: 0.85, z: 1}
   m_Children: []
   m_Father: {fileID: 430992052}
@@ -3773,7 +3795,7 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
+  m_Color: {r: 0.16037738, g: 0.16037738, b: 0.16037738, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
@@ -8945,7 +8967,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!65 &4704861153678677245
 BoxCollider:
@@ -9027,7 +9049,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!65 &4744018474459038830
 BoxCollider:
@@ -9928,7 +9950,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!65 &5807572699092366353
 BoxCollider:
@@ -12681,7 +12703,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!65 &8643646215047809561
 BoxCollider:
@@ -12948,7 +12970,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!65 &8814502140006500622
 BoxCollider:
