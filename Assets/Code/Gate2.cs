@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class Gate2 : MonoBehaviour
 {
+    [SerializeField]
     public static bool GateCheck = false;
+
     public bool Gaters = false;
 
     public bool _inZone = false;

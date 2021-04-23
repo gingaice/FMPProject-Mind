@@ -1193,6 +1193,7 @@ GameObject:
   - component: {fileID: 119155222}
   - component: {fileID: 119155221}
   - component: {fileID: 119155225}
+  - component: {fileID: 119155226}
   m_Layer: 0
   m_Name: DeskInteract
   m_TagString: Cards
@@ -1290,6 +1291,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &119155226
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 119155220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0d38dcb6d7b7ae4d8a0bbb0c6f1fff3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inter: {fileID: 1598761160}
 --- !u!1 &188810461
 GameObject:
   m_ObjectHideFlags: 0
@@ -5053,6 +5067,7 @@ GameObject:
   - component: {fileID: 984633132}
   - component: {fileID: 984633131}
   - component: {fileID: 984633130}
+  - component: {fileID: 984633135}
   m_Layer: 0
   m_Name: DeskTwoInteract
   m_TagString: Cards
@@ -5150,6 +5165,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 26
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &984633135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 984633129}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0d38dcb6d7b7ae4d8a0bbb0c6f1fff3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inter: {fileID: 1598761160}
 --- !u!1 &1021724432
 GameObject:
   m_ObjectHideFlags: 0
@@ -5526,7 +5554,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1144346354}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -30.66, y: 0, z: 4.36}
+  m_LocalPosition: {x: -30.66, y: 0, z: 5.12}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 406460046}
@@ -7184,7 +7212,7 @@ BoxCollider:
   m_GameObject: {fileID: 1492216388}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1.2, y: 1.2, z: 1.2}
   m_Center: {x: 0, y: 0, z: 0}
@@ -7583,6 +7611,7 @@ GameObject:
   - component: {fileID: 1619298057}
   - component: {fileID: 1619298056}
   - component: {fileID: 1619298060}
+  - component: {fileID: 1619298061}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -7711,6 +7740,50 @@ MonoBehaviour:
   _inColl: 0
   door1anim: {fileID: 8776197634258693713}
   door2anim: {fileID: 4432310144110590156}
+  Carrying: {fileID: 824447671}
+  CardSpawned: {fileID: 1699493413}
+  key: e
+  _timer: 0
+  _startTimer: 0
+  _holdTime: 1
+  held: 0
+--- !u!114 &1619298061
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1619298054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5102f41bd3344ae4e84f3e35e5f68b5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  card: {fileID: 984633134}
+  cardMovement: 0
+  cardMap: {fileID: 365482230}
+  DoorCan: 0
+  cardPlacement: 0
+  one: 16
+  SpawnPoint1: {fileID: 1140332543}
+  cardfreeze1: 0
+  SpawnPoint2: {fileID: 801344388}
+  cardfreeze2: 0
+  SpawnPoint3: {fileID: 814474337}
+  cardfreeze3: 0
+  SpawnPoint4: {fileID: 1693806703}
+  cardfreeze4: 0
+  SpawnPoint5: {fileID: 1758265354}
+  cardfreeze5: 0
+  SpawnPoint6: {fileID: 391433222}
+  cardfreeze6: 0
+  SpawnPoint7: {fileID: 1871491502}
+  cardfreeze7: 0
+  SpawnPoint8: {fileID: 1144346355}
+  cardfreeze8: 0
+  _inColl: 0
+  door1anim: {fileID: 7709413005336502716}
+  door2anim: {fileID: 3365523314420578112}
   Carrying: {fileID: 824447671}
   CardSpawned: {fileID: 1699493413}
   key: e
@@ -9299,7 +9372,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 1, g: 0, b: 0, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
@@ -21199,6 +21272,7 @@ GameObject:
   - component: {fileID: 7709413005336502717}
   - component: {fileID: 7709413005336502719}
   - component: {fileID: 7709413005336502716}
+  - component: {fileID: 7709413005336502720}
   m_Layer: 0
   m_Name: DoorLeft
   m_TagString: Gate
@@ -21265,6 +21339,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Gaters: 0
   _inZone: 0
+--- !u!114 &7709413005336502720
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7709413005336502715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0d38dcb6d7b7ae4d8a0bbb0c6f1fff3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inter: {fileID: 1598761160}
 --- !u!1 &7725161132198132875
 GameObject:
   m_ObjectHideFlags: 0
@@ -22657,6 +22744,7 @@ GameObject:
   - component: {fileID: 54747472}
   - component: {fileID: 8776197634258693712}
   - component: {fileID: 8776197634258693713}
+  - component: {fileID: 8776197634258693714}
   m_Layer: 0
   m_Name: pCube45
   m_TagString: Gate
@@ -22697,6 +22785,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &8776197634258693714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8776197634258693711}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0d38dcb6d7b7ae4d8a0bbb0c6f1fff3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inter: {fileID: 1598761160}
 --- !u!1 &8791913132426510519
 GameObject:
   m_ObjectHideFlags: 0

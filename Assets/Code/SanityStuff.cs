@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class SanityStuff : MonoBehaviour
 {
-    public float damageInsanity = 50;
+    public float damageInsanity = 75;
     public float Mhealth = 500;
     public bool inSight;
 
