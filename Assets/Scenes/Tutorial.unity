@@ -3085,6 +3085,7 @@ MonoBehaviour:
   _Player: {fileID: 1748738594}
   _HidingSpot: {fileID: 1633098013}
   checker: 0
+  _interact: {fileID: 690904680}
 --- !u!65 &1302678183
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3877,6 +3878,7 @@ GameObject:
   - component: {fileID: 1633098011}
   - component: {fileID: 1633098010}
   - component: {fileID: 1633098014}
+  - component: {fileID: 1633098015}
   m_Layer: 0
   m_Name: VisionSafeSpace
   m_TagString: Untagged
@@ -3954,7 +3956,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1633098009}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 53.5, y: 0.97, z: 28.15}
+  m_LocalPosition: {x: 43.62, y: 0.97, z: 28.15}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 1302678181}
@@ -3976,6 +3978,20 @@ MonoBehaviour:
   _Player: {fileID: 1748738594}
   _OutOfHiding: {fileID: 1302678181}
   inside: 0
+  _interact: {fileID: 690904680}
+--- !u!65 &1633098015
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1633098009}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.1, y: 1.1, z: 1.1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1717274801
 GameObject:
   m_ObjectHideFlags: 0

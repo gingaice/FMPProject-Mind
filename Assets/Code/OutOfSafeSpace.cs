@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class OutOfSafeSpace : MonoBehaviour
 {
@@ -12,10 +13,12 @@ public class OutOfSafeSpace : MonoBehaviour
 
     public bool inside = false;
 
+    public Image _interact;
     // Start is called before the first frame update
     void Start()
     {
         isSafe = false;
+        _interact.enabled = false;
     }
 
     // Update is called once per frame
@@ -39,6 +42,11 @@ public class OutOfSafeSpace : MonoBehaviour
 
             isSafe = true;
             inside = true;
+            _interact.enabled = true;
         }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        _interact.enabled = false;
     }
 }

@@ -415,7 +415,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1.2, y: 1.2, z: 1.2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!33 &27893354
 MeshFilter:
@@ -496,6 +496,7 @@ MonoBehaviour:
   _Player: {fileID: 461998561}
   _OutOfHiding: {fileID: 249300530}
   inside: 0
+  _interact: {fileID: 1598761160}
 --- !u!65 &27893358
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1336,7 +1337,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1.2, y: 1.2, z: 1.2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &188810464
 MonoBehaviour:
@@ -1353,6 +1354,7 @@ MonoBehaviour:
   _Player: {fileID: 461998561}
   _OutOfHiding: {fileID: 852377993}
   inside: 0
+  _interact: {fileID: 1598761160}
 --- !u!65 &188810465
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1669,6 +1671,7 @@ MonoBehaviour:
   _Player: {fileID: 461998561}
   _HidingSpot: {fileID: 27893355}
   checker: 0
+  _interact: {fileID: 1598761160}
 --- !u!65 &249300532
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3405,7 +3408,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1.2, y: 1.2, z: 1.2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &597827358
 MonoBehaviour:
@@ -3422,6 +3425,7 @@ MonoBehaviour:
   _Player: {fileID: 461998561}
   _OutOfHiding: {fileID: 2008874340}
   inside: 0
+  _interact: {fileID: 1598761160}
 --- !u!65 &597827359
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4672,6 +4676,7 @@ MonoBehaviour:
   _Player: {fileID: 461998561}
   _HidingSpot: {fileID: 188810462}
   checker: 0
+  _interact: {fileID: 1598761160}
 --- !u!65 &852377995
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5867,7 +5872,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1231454161}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -12.41, y: 0.32, z: -8.73}
+  m_LocalPosition: {x: -12.41, y: 0.32, z: -16.92}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 685730533}
@@ -6906,7 +6911,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1.2, y: 1.2, z: 1.2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1457040158
 MonoBehaviour:
@@ -6923,6 +6928,7 @@ MonoBehaviour:
   _Player: {fileID: 461998561}
   _OutOfHiding: {fileID: 2105608736}
   inside: 0
+  _interact: {fileID: 1598761160}
 --- !u!65 &1457040159
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7178,9 +7184,9 @@ BoxCollider:
   m_GameObject: {fileID: 1492216388}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1.2, y: 1.2, z: 1.2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1492216391
 MonoBehaviour:
@@ -7197,6 +7203,7 @@ MonoBehaviour:
   _Player: {fileID: 461998561}
   _OutOfHiding: {fileID: 1974469000}
   inside: 0
+  _interact: {fileID: 1598761160}
 --- !u!65 &1492216392
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8502,7 +8509,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1847227330}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.6, y: 0.32, z: 5.41}
+  m_LocalPosition: {x: 1.12, y: 0.32, z: 7.31}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 118256541}
@@ -8773,6 +8780,7 @@ MonoBehaviour:
   _Player: {fileID: 461998561}
   _HidingSpot: {fileID: 1492216389}
   checker: 0
+  _interact: {fileID: 1598761160}
 --- !u!65 &1974469002
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8887,6 +8895,7 @@ MonoBehaviour:
   _Player: {fileID: 461998561}
   _HidingSpot: {fileID: 597827356}
   checker: 0
+  _interact: {fileID: 1598761160}
 --- !u!65 &2008874342
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9207,6 +9216,7 @@ MonoBehaviour:
   _Player: {fileID: 461998561}
   _HidingSpot: {fileID: 1457040156}
   checker: 0
+  _interact: {fileID: 1598761160}
 --- !u!65 &2105608738
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -81,6 +81,11 @@ public class SanityStuff : MonoBehaviour
             inSight = false;
         }
 
+
+        if (OutOfSafeSpace.isSafe == true)
+        {
+            inSight = false;
+        }
     }
     /**
     private void OnTriggerEnter(Collider other)
