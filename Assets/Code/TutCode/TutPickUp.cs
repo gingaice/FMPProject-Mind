@@ -15,7 +15,9 @@ public class TutPickUp : MonoBehaviour
     public float _holdTime = 3;
     public bool held = false;
 
-    public Text pogup;
+    public Image pogup;
+
+    public Image HoldDown;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +25,7 @@ public class TutPickUp : MonoBehaviour
         DoubleDoor2.enabled = false;
 
         pogup.enabled = false;
+        HoldDown.enabled = false;
     }
 
     // Update is called once per frame
@@ -60,6 +63,21 @@ public class TutPickUp : MonoBehaviour
         }
     }
 
+    void OnTriggerEnter(Collider other)
+    {
+        if(other.name == "Player")
+        {
+            HoldDown.enabled = true;
+        }
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        if (other.name == "Player")
+        {
+            HoldDown.enabled = false;
+        }
+    }
 
     void ButtonHeld()
     {
