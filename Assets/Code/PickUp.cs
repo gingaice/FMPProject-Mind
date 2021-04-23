@@ -44,7 +44,7 @@ public class PickUp : MonoBehaviour
 
     public float _timer = 0;
     public float _startTimer = 0;
-    public float _holdTime = 3;
+    public float _holdTime = 1;
     public bool held = false;
 
     //private int rand;
