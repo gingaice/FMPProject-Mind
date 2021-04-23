@@ -30,8 +30,8 @@ public class PickUp : MonoBehaviour
     public Animator door1anim;
     public Animator door2anim;
 
-    public Text Carrying;
-    public Text CardSpawned;
+    public Image Carrying;
+    public Image CardSpawned;
 
     //[SerializeField]
     //List<SpawnPoints> _Spawnpoints;

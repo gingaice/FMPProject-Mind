@@ -17,4 +17,9 @@ public class DeathMenu : MonoBehaviour
         SceneManager.LoadScene("StartMenu");
         Time.timeScale = 1;
     }
+    public void loadSettings()
+    {
+        SceneManager.LoadScene("Settings");
+        Time.timeScale = 1;
+    }
 }

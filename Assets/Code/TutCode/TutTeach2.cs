@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class TutTeach : MonoBehaviour
+public class TutTeach2 : MonoBehaviour
 {
     public bool freeze;
 
@@ -13,9 +13,12 @@ public class TutTeach : MonoBehaviour
     public bool _TimeGoUp;
 
     public Image _findthekey;
+
+    public Animator doorsin;
     // Start is called before the first frame update
     void Start()
     {
+        doorsin.enabled = false;
         _findthekey.enabled = false;
     }
 
@@ -27,17 +30,18 @@ public class TutTeach : MonoBehaviour
             Time.timeScale = 0.1f;
             _findthekey.enabled = true;
             _TimeGoUp = true;
+            doorsin.enabled = true;
         }
 
-        if(_TimeGoUp == true)
+        if (_TimeGoUp == true)
         {
             _timer += Time.deltaTime;
         }
 
         //do it so after a bit it will destroy the trigger that you are stood on
-        if(_timer >= _ScreenTime)
+        if (_timer >= _ScreenTime)
         {
-            Destroy (this.gameObject);
+            Destroy(this.gameObject);
             _timer = 0;
             _TimeGoUp = false;
             _findthekey.enabled = false;
@@ -46,7 +50,7 @@ public class TutTeach : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if(other.name == "Player")
+        if (other.name == "Player")
         {
             freeze = true;
         }

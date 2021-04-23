@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Vents : MonoBehaviour
 {
@@ -13,10 +14,11 @@ public class Vents : MonoBehaviour
     public float stopperTime;
     public float speed = 1;
 
+    public Image presse;
     // Start is called before the first frame update
     void Start()
     {
-        
+        presse.enabled = false;
     }
 
     // Update is called once per frame
@@ -57,10 +59,12 @@ public class Vents : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         CanTele = true;
+        presse.enabled = true;
     }
 
     private void OnTriggerExit(Collider other)
     {
+        presse.enabled = false;
         CanTele = false;
     }
 }
