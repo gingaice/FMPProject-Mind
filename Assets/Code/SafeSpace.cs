@@ -37,4 +37,11 @@ public class SafeSpace : MonoBehaviour
             checker = true;
         }
     }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.name == "Player")
+        {
+            checker = false;
+        }
+    }
 }
