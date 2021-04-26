@@ -8,7 +8,7 @@ public class TutTeach : MonoBehaviour
     public bool freeze;
 
     public float _timer = 0;
-    public float _ScreenTime = 0.175f;
+    public float _ScreenTime = 0.275f;
 
     public bool _TimeGoUp;
 
