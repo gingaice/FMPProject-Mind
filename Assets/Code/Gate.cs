@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Gate : MonoBehaviour
 {
@@ -9,10 +10,11 @@ public class Gate : MonoBehaviour
 
     public bool _inZone = false;
 
+    public Image press;
     // Start is called before the first frame update
     void Start()
     {
-        
+        press.enabled = false;
     }
 
     // Update is called once per frame
@@ -36,7 +38,7 @@ public class Gate : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         _inZone = true;
-
+        press.enabled = true;
         /**
         if (Input.GetKeyDown(KeyCode.E))
         {
@@ -52,6 +54,7 @@ public class Gate : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         _inZone = false;
+        press.enabled = false;
     }
     
 }
