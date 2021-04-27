@@ -54,7 +54,7 @@ public class SanityStuff : MonoBehaviour
             regenTime += Time.deltaTime * damageInsanity;
         }
 
-        if(regenTime >= 500)
+        if(regenTime >= 300)
         {
             Mhealth += Time.deltaTime * damageInsanity;
         }

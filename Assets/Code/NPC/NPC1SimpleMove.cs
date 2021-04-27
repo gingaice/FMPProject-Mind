@@ -29,7 +29,7 @@ public class NPC1SimpleMove : MonoBehaviour
     bool _patrolForward;
     float _waitTimer;
 
-    private static int _rotationSpeed = 80;
+    private static int _rotationSpeed = 95;
 
     public float chaserTime = 500f;
     public float decreaseSpeed = 50f;
