@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TutSpawnIn : MonoBehaviour
 {
-    
+    /**
     public Transform _key;
 
     public Transform _Dummy1;
@@ -60,5 +60,5 @@ public class TutSpawnIn : MonoBehaviour
         }
         
     }
-    
+ **/   
 }
