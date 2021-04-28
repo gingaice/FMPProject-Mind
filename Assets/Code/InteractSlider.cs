@@ -15,9 +15,13 @@ public class InteractSlider : MonoBehaviour
         _sliderInstance.value = 0;
     }
 
-    // Update is called once per frame
+    public void OnValueChanged(float value)
+    {
+        Debug.Log("New Value" + value);
+    }
+
     void Update()
     {
-        
+
     }
 }

@@ -31,6 +31,7 @@ public class Gate : MonoBehaviour
         if(Gaters == true)
         {
             GateCheck = true;
+            press.enabled = false;
         }
     }
 

@@ -53,6 +53,7 @@ public class PickUpSecond : MonoBehaviour
     public float _holdTime = 1;
     public bool held = false;
 
+    public Slider _sliderInstance;
     //private int rand;
     //private spawnPointData templates;
 
@@ -63,6 +64,11 @@ public class PickUpSecond : MonoBehaviour
         door2anim.enabled = false;
 
         Carrying.enabled = false;
+
+        _sliderInstance.minValue = _timer;
+        _sliderInstance.maxValue = _holdTime;
+        //_sliderInstance.wholeNumbers = true;
+        _sliderInstance.value = 0;
         //templates = GameObject.FindGameObjectWithTag("CardSpawns").GetComponent<spawnPointData>();
     }
 
@@ -76,12 +82,14 @@ public class PickUpSecond : MonoBehaviour
             {
                 _startTimer = Time.time;
                 _timer = _startTimer;
+                _sliderInstance.value = 0;
             }
 
             // Adds time onto the timer so long as the key is pressed
             if (Input.GetKey(key) && held == false)
             {
                 _timer += Time.deltaTime;
+                _sliderInstance.value += Time.deltaTime;
 
                 // Once the timer float has added on the required holdTime, changes the bool (for a single trigger), and calls the function
                 if (_timer > (_startTimer + _holdTime))

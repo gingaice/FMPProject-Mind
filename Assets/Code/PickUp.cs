@@ -47,6 +47,7 @@ public class PickUp : MonoBehaviour
     public float _holdTime = 1;
     public bool held = false;
 
+    public Slider _sliderInstance;
     //private int rand;
     //private spawnPointData templates;
 
@@ -57,7 +58,18 @@ public class PickUp : MonoBehaviour
         door2anim.enabled = false;
 
         Carrying.enabled = false;
-        //templates = GameObject.FindGameObjectWithTag("CardSpawns").GetComponent<spawnPointData>();
+
+        _sliderInstance.minValue = _timer;
+        _sliderInstance.maxValue = _holdTime;
+        //_sliderInstance.wholeNumbers = true;
+        _sliderInstance.value = 0;
+
+        /**
+        _sliderInstance.minValue = 0;
+        _sliderInstance.maxValue = 100;
+        _sliderInstance.wholeNumbers = true;
+        _sliderInstance.value = 0;
+        **/
     }
 
     // Update is called once per frame
@@ -70,13 +82,14 @@ public class PickUp : MonoBehaviour
             {
                 _startTimer = Time.time;
                 _timer = _startTimer;
+                _sliderInstance.value = 0;
             }
 
             // Adds time onto the timer so long as the key is pressed
             if (Input.GetKey(key) && held == false)
             {
                 _timer += Time.deltaTime;
-
+                _sliderInstance.value += Time.deltaTime;
                 // Once the timer float has added on the required holdTime, changes the bool (for a single trigger), and calls the function
                 if (_timer > (_startTimer + _holdTime))
                 {
@@ -132,6 +145,11 @@ public class PickUp : MonoBehaviour
             cardPlacement = 1;
         }
 
+    }
+
+    public void OnValueChanged(float value)
+    {
+        Debug.Log("New Value" + value);
     }
 
     void OnTriggerEnter(Collider other)
