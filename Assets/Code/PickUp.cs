@@ -173,16 +173,6 @@ public class PickUp : MonoBehaviour
             inter.enabled = false;
             _inColl = false;
         }
-        /**
-        if (other.CompareTag("Gate"))
-        {
-            if(DoorCan == true)
-            {
-                door1anim.enabled = true;
-                door2anim.enabled = true;
-            }
-        }
-        **/
     }
 
     void ButtonHeld()

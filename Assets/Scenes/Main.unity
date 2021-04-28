@@ -9834,7 +9834,6 @@ GameObject:
   - component: {fileID: 1619298057}
   - component: {fileID: 1619298056}
   - component: {fileID: 1619298060}
-  - component: {fileID: 1619298062}
   - component: {fileID: 1619298061}
   m_Layer: 0
   m_Name: Sphere
@@ -10010,25 +10009,12 @@ MonoBehaviour:
   door1anim: {fileID: 7709413005336502716}
   door2anim: {fileID: 3365523314420578112}
   Carrying: {fileID: 1873948045}
-  CardSpawned: {fileID: 2000780119}
+  inter: {fileID: 2000780119}
   key: e
   _timer: 0
   _startTimer: 0
   _holdTime: 1
   held: 0
-  _sliderInstance: {fileID: 1785276830}
---- !u!114 &1619298062
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1619298054}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4552089f6a8d2bd40abb7fc418ea0fed, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
   _sliderInstance: {fileID: 1785276830}
 --- !u!1 &1621145088
 GameObject:

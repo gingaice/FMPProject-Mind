@@ -37,14 +37,7 @@ public class PickUpSecond : MonoBehaviour
     public Animator door2anim;
 
     public Image Carrying;
-    public Image CardSpawned;
-
-    //[SerializeField]
-    //List<SpawnPoints> _Spawnpoints;
-
-    //public GameObject[] _Spawnpoints;
-
-    //public int _currentPlacementSpawnIndex;
+    public Image inter;
 
     public string key = "e";
 
@@ -54,8 +47,7 @@ public class PickUpSecond : MonoBehaviour
     public bool held = false;
 
     public Slider _sliderInstance;
-    //private int rand;
-    //private spawnPointData templates;
+
 
     // Start is called before the first frame update
     void Start()
@@ -69,7 +61,7 @@ public class PickUpSecond : MonoBehaviour
         _sliderInstance.maxValue = _holdTime;
         //_sliderInstance.wholeNumbers = true;
         _sliderInstance.value = 0;
-        //templates = GameObject.FindGameObjectWithTag("CardSpawns").GetComponent<spawnPointData>();
+        _sliderInstance.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -90,6 +82,7 @@ public class PickUpSecond : MonoBehaviour
             {
                 _timer += Time.deltaTime;
                 _sliderInstance.value += Time.deltaTime;
+                _sliderInstance.gameObject.SetActive(true);
 
                 // Once the timer float has added on the required holdTime, changes the bool (for a single trigger), and calls the function
                 if (_timer > (_startTimer + _holdTime))
@@ -105,8 +98,12 @@ public class PickUpSecond : MonoBehaviour
         if (Input.GetKeyUp(key))
         {
             Carrying.enabled = false;
+            _sliderInstance.gameObject.SetActive(false);
         }
-
+        if(held == true)
+        {
+            inter.enabled = false;
+        }
         if (Gate2.GateCheck == true)
         {
             cardMovement = true;
@@ -158,13 +155,18 @@ public class PickUpSecond : MonoBehaviour
             cardPlacement = 1;
         }
     }
-
+    public void OnValueChanged(float value)
+    {
+        Debug.Log("New Value" + value);
+    }
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Cards"))
         {
             if(other.gameObject.name == "DeskTwoInteract")
             {
+                inter.enabled = true;
+
                 _inColl = true;
             }
             //DoorCan = true;
@@ -188,6 +190,8 @@ public class PickUpSecond : MonoBehaviour
     {
         if (other.CompareTag("Cards"))
         {
+            inter.enabled = false;
+
             _inColl = false;
         }
         /**
