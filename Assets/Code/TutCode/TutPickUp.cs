@@ -21,6 +21,8 @@ public class TutPickUp : MonoBehaviour
     public Image nothingup;
     public Image HoldDown;
 
+    public Slider _sliderInstance;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -30,6 +32,11 @@ public class TutPickUp : MonoBehaviour
         pogup.enabled = false;
         HoldDown.enabled = false;
         nothingup.enabled = false;
+
+        _sliderInstance.minValue = _timer;
+        _sliderInstance.maxValue = _holdTime;
+        _sliderInstance.value = 0;
+        _sliderInstance.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -43,13 +50,15 @@ public class TutPickUp : MonoBehaviour
                 {
                     _startTimer = Time.time;
                     _timer = _startTimer;
+                    _sliderInstance.value = 0;
                 }
 
                 // Adds time onto the timer so long as the key is pressed
                 if (Input.GetKey(key) && held == false)
                 {
+                    _sliderInstance.gameObject.SetActive(true);
                     _timer += Time.deltaTime;
-
+                    _sliderInstance.value += Time.deltaTime;
                     // Once the timer float has added on the required holdTime, changes the bool (for a single trigger), and calls the function
                     if (_timer > (_startTimer + _holdTime))
                     {
@@ -60,6 +69,7 @@ public class TutPickUp : MonoBehaviour
                 if (Input.GetKeyUp(key))
                 {
                     nothingup.enabled = false;
+                    _sliderInstance.gameObject.SetActive(false);
                 }
             }
             if (this.gameObject.name == "Key")
