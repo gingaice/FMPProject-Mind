@@ -5,11 +5,15 @@ using UnityEngine;
 public class CharController : MonoBehaviour
 {
     [SerializeField]
-    float moveSpeed = 4f;
+    float moveSpeed = 3.5f;
+
+    float increaser = 1f;
 
     Vector3 forward, right;
 
-    public float _sprintTime;
+    public float _sprintTime = 50f;
+    public bool _canSprint = true;
+    private bool _speedDecrease = false;
 
     void Start()
     {
@@ -25,6 +29,16 @@ public class CharController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (_sprintTime >= 50)
+        {
+            _sprintTime = 50f;
+        }
+
+        if(_sprintTime >= 10f)
+        {
+            _canSprint = true;
+        }
+
         if (Input.anyKey)
         {
             Move();
@@ -32,12 +46,35 @@ public class CharController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
-            moveSpeed = 5.5f;
+            if(_canSprint == true)
+            {
+                moveSpeed = 5.5f;
+                _speedDecrease = true;
+                //_sprintTime -= Time.deltaTime * moveSpeed;
+            }
+        }
+
+        if(_speedDecrease == true)
+        {
+            _sprintTime -= Time.deltaTime * moveSpeed;
+        }
+
+        if(_speedDecrease == false)
+        {
+            _sprintTime += Time.deltaTime * increaser;
         }
 
         if (Input.GetKeyUp(KeyCode.LeftShift))
         {
-            moveSpeed = 3f;
+            moveSpeed = 3.5f;
+            _speedDecrease = false;
+        }
+
+        if(_sprintTime <= 0)
+        {
+            _speedDecrease = false;
+            _sprintTime = 0;
+            _canSprint = false;
         }
     }
 
