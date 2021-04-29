@@ -50,6 +50,8 @@ public class PickUp : MonoBehaviour
 
         Carrying.enabled = false;
 
+        inter.enabled = false;
+
         _sliderInstance.minValue = _timer;
         _sliderInstance.maxValue = _holdTime;
         _sliderInstance.value = 0;
