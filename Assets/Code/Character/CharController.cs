@@ -11,7 +11,7 @@ public class CharController : MonoBehaviour
 
     Vector3 forward, right;
 
-    public float _sprintTime = 50f;
+    public float _sprintTime = 20f;
     public bool _canSprint = true;
     private bool _speedDecrease = false;
 
@@ -29,9 +29,9 @@ public class CharController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (_sprintTime >= 50)
+        if (_sprintTime >= 20)
         {
-            _sprintTime = 50f;
+            _sprintTime = 20f;
         }
 
         if(_sprintTime >= 10f)
@@ -46,11 +46,14 @@ public class CharController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
-            if(_canSprint == true)
+            if(_sprintTime <= 0)
             {
-                moveSpeed = 5.5f;
-                _speedDecrease = true;
-                //_sprintTime -= Time.deltaTime * moveSpeed;
+                if (_canSprint == true)
+                {
+                    moveSpeed = 5.5f;
+                    _speedDecrease = true;
+                    //_sprintTime -= Time.deltaTime * moveSpeed;
+                }
             }
         }
 
