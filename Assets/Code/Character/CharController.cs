@@ -9,7 +9,7 @@ public class CharController : MonoBehaviour
 
     Vector3 forward, right;
 
-
+    public float _sprintTime;
 
     void Start()
     {
@@ -32,7 +32,7 @@ public class CharController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
-            moveSpeed = 5f;
+            moveSpeed = 5.5f;
         }
 
         if (Input.GetKeyUp(KeyCode.LeftShift))
