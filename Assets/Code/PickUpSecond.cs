@@ -44,7 +44,7 @@ public class PickUpSecond : MonoBehaviour
     public float _timer = 0;
     public float _startTimer = 0;
     public float _holdTime = 1;
-    public bool held = false;
+    public bool heldAgain = false;
 
     public Slider _sliderInstance;
 
@@ -56,6 +56,7 @@ public class PickUpSecond : MonoBehaviour
         door2anim.enabled = false;
 
         Carrying.enabled = false;
+        inter.enabled = false;
 
         _sliderInstance.minValue = _timer;
         _sliderInstance.maxValue = _holdTime;
@@ -78,7 +79,7 @@ public class PickUpSecond : MonoBehaviour
             }
 
             // Adds time onto the timer so long as the key is pressed
-            if (Input.GetKey(key) && held == false)
+            if (Input.GetKey(key) && heldAgain == false)
             {
                 _timer += Time.deltaTime;
                 _sliderInstance.value += Time.deltaTime;
@@ -88,7 +89,7 @@ public class PickUpSecond : MonoBehaviour
                 if (_timer > (_startTimer + _holdTime))
                 {
                     Carrying.enabled = true;
-                    held = true;
+                    heldAgain = true;
                     ButtonHeld();
                     card.position = cardMap.position;
                     DoorCan = true;
@@ -100,7 +101,7 @@ public class PickUpSecond : MonoBehaviour
             Carrying.enabled = false;
             _sliderInstance.gameObject.SetActive(false);
         }
-        if(held == true)
+        if(heldAgain == true)
         {
             inter.enabled = false;
         }
@@ -176,7 +177,7 @@ public class PickUpSecond : MonoBehaviour
         {
             if (DoorCan == true)
             {
-                if (held == true)
+                if (heldAgain == true)
                 {
                     door1anim.enabled = true;
                     door2anim.enabled = true;
@@ -194,16 +195,6 @@ public class PickUpSecond : MonoBehaviour
 
             _inColl = false;
         }
-        /**
-        if (other.CompareTag("Gate"))
-        {
-            if(DoorCan == true)
-            {
-                door1anim.enabled = true;
-                door2anim.enabled = true;
-            }
-        }
-        **/
     }
 
     void ButtonHeld()

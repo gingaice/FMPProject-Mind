@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Gate2 : MonoBehaviour
 {
@@ -11,10 +12,11 @@ public class Gate2 : MonoBehaviour
 
     public bool _inZone = false;
 
+    public Image press;
     // Start is called before the first frame update
     void Start()
     {
-
+        press.enabled = false;
     }
 
     // Update is called once per frame
@@ -30,6 +32,7 @@ public class Gate2 : MonoBehaviour
 
         if (Gaters == true)
         {
+            press.enabled = false;
             GateCheck = true;
         }
     }
@@ -38,21 +41,13 @@ public class Gate2 : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         _inZone = true;
-
-        /**
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            if (other.name == "player")
-            {
-                Gaters = true;
-            }
-        }
-        **/
+        press.enabled = true;
     }
 
 
     private void OnTriggerExit(Collider other)
     {
+        press.enabled = false;
         _inZone = false;
     }
 

@@ -29,6 +29,16 @@ public class CharController : MonoBehaviour
         {
             Move();
         }
+
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            moveSpeed = 5f;
+        }
+
+        if (Input.GetKeyUp(KeyCode.LeftShift))
+        {
+            moveSpeed = 3f;
+        }
     }
 
     private void Move()
