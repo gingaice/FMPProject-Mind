@@ -8,11 +8,14 @@ public class CharController : MonoBehaviour
     [SerializeField]
     float moveSpeed = 3.5f;
 
-    float increaser = 1f;
+    public float _timer = 0f;
+    public float _holdTime = 15f;
+
+    float increaser = 1;
 
     Vector3 forward, right;
 
-    public float _sprintTime = 20f;
+    public float _sprintTime = 15f;
     public bool _canSprint = true;
     private bool _speedDecrease = false;
 
@@ -28,8 +31,8 @@ public class CharController : MonoBehaviour
         forward = Vector3.Normalize(forward);
         right = Quaternion.Euler(new Vector3(0, 90, 0)) * forward;
 
-        _stamBar.minValue = increaser;
-        _stamBar.maxValue = _sprintTime;
+        _stamBar.minValue = _timer;
+        _stamBar.maxValue = _holdTime;
         _stamBar.value = 15;
         _stamBar.wholeNumbers = true;
         _stamBar.gameObject.SetActive(false);
@@ -38,12 +41,12 @@ public class CharController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (_sprintTime >= 20)
+        if (_sprintTime >= 15)
         {
-            _sprintTime = 20f;
+            _sprintTime = 15f;
         }
 
-        if(_sprintTime >= 10f)
+        if(_sprintTime >= 5f)
         {
             _canSprint = true;
         }
@@ -52,14 +55,15 @@ public class CharController : MonoBehaviour
         {
             Move();
         }
+
         if(_canSprint == true)
         {
             if (Input.GetKeyDown(KeyCode.LeftShift))
             {
                 if (_sprintTime >= 0)
                 {
-                    _stamBar.value -= Time.deltaTime;
                     _stamBar.gameObject.SetActive(true);
+                    _stamBar.value += Time.deltaTime;
                     moveSpeed = 5.5f;
                     _speedDecrease = true;
                     //_sprintTime -= Time.deltaTime * moveSpeed;
@@ -87,6 +91,7 @@ public class CharController : MonoBehaviour
 
         if(_sprintTime <= 1)
         {
+            _stamBar.gameObject.SetActive(false);
             moveSpeed = 3.5f;
             _speedDecrease = false;
             _canSprint = false;
