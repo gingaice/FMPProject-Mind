@@ -80,3 +80,38 @@ Received Import Request.
 Start importing Assets/Code/Character/CharController.cs using Guid(902a16615f49b2c4fa7afde320de6e46) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e7d83631e77e8d64444c6d490f6e14d9') in 0.111877 seconds
   Import took 0.114263 seconds .
 
+========================================================================
+Received Prepare
+Refreshing native plugins compatible for Editor in 1.38 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 37.9 MB.
+System memory in use after: 38.0 MB.
+
+Unloading 5 unused Assets to reduce memory usage. Loaded Objects now: 1635.
+Total: 2.578300 ms (FindLiveObjects: 0.205700 ms CreateObjectMapping: 0.037400 ms MarkObjects: 2.217800 ms  DeleteObjects: 0.115400 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001027 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.25 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.817 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.28 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1164 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 61.1 MB.
+System memory in use after: 61.1 MB.
+
+Unloading 7 unused Assets to reduce memory usage. Loaded Objects now: 1638.
+Total: 1.952100 ms (FindLiveObjects: 0.210100 ms CreateObjectMapping: 0.030100 ms MarkObjects: 1.607700 ms  DeleteObjects: 0.102400 ms)
+
+AssetImportWorkerClient::OnTransportError - code=2 error=End of file
