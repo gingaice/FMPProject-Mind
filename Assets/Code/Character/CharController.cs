@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CharController : MonoBehaviour
 {
@@ -15,6 +16,8 @@ public class CharController : MonoBehaviour
     public bool _canSprint = true;
     private bool _speedDecrease = false;
 
+    public Slider _stamBar;
+
     void Start()
     {
         //the camera is facing the way that isometric moves so that the character doesnt move on the z path
@@ -24,6 +27,12 @@ public class CharController : MonoBehaviour
         //keeps the vectors direction
         forward = Vector3.Normalize(forward);
         right = Quaternion.Euler(new Vector3(0, 90, 0)) * forward;
+
+        _stamBar.minValue = increaser;
+        _stamBar.maxValue = _sprintTime;
+        _stamBar.value = 15;
+        _stamBar.wholeNumbers = true;
+        _stamBar.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -43,19 +52,21 @@ public class CharController : MonoBehaviour
         {
             Move();
         }
-
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        if(_canSprint == true)
         {
-            if(_sprintTime <= 0)
+            if (Input.GetKeyDown(KeyCode.LeftShift))
             {
-                if (_canSprint == true)
+                if (_sprintTime >= 0)
                 {
+                    _stamBar.value -= Time.deltaTime;
+                    _stamBar.gameObject.SetActive(true);
                     moveSpeed = 5.5f;
                     _speedDecrease = true;
                     //_sprintTime -= Time.deltaTime * moveSpeed;
                 }
             }
         }
+
 
         if(_speedDecrease == true)
         {
@@ -69,14 +80,15 @@ public class CharController : MonoBehaviour
 
         if (Input.GetKeyUp(KeyCode.LeftShift))
         {
+            _stamBar.gameObject.SetActive(false);
             moveSpeed = 3.5f;
             _speedDecrease = false;
         }
 
-        if(_sprintTime <= 0)
+        if(_sprintTime <= 1)
         {
+            moveSpeed = 3.5f;
             _speedDecrease = false;
-            _sprintTime = 0;
             _canSprint = false;
         }
     }
