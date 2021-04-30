@@ -78,13 +78,15 @@ public class TutPickUp : MonoBehaviour
                 {
                     _startTimer = Time.time;
                     _timer = _startTimer;
+                    _sliderInstance.value = 0;
                 }
 
                 // Adds time onto the timer so long as the key is pressed
                 if (Input.GetKey(key) && held == false)
                 {
+                    _sliderInstance.gameObject.SetActive(true);
                     _timer += Time.deltaTime;
-
+                    _sliderInstance.value += Time.deltaTime;
                     // Once the timer float has added on the required holdTime, changes the bool (for a single trigger), and calls the function
                     if (_timer > (_startTimer + _holdTime))
                     {
@@ -104,6 +106,7 @@ public class TutPickUp : MonoBehaviour
                 {
                     pogup.enabled = false;
                     held = false;
+                    _sliderInstance.gameObject.SetActive(false);
                 }
             }
         }
