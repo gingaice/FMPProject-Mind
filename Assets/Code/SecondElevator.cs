@@ -20,7 +20,7 @@ public class SecondElevator : MonoBehaviour
     {
         if (other.name == "Player")
         {
-            SceneManager.LoadScene("SecondMain");
+            SceneManager.LoadScene("Rooftop");
         }
     }
 }
