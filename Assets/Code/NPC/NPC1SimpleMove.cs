@@ -143,16 +143,6 @@ public class NPC1SimpleMove : MonoBehaviour
     // Update is called once per frame
     public void Update()
     {
-        /**
-        if (NPC1SimpleMove.lockOn == true)
-        {
-            _Ex.enabled = true;
-        }
-        else
-        {
-            _Ex.enabled = false;
-        }
-        **/
         //checking to see if were close to the destination that we want to go too
         if (_travelling && _navMeshAgent.remainingDistance <= 1.5f)
         {

@@ -37,7 +37,7 @@ public class PickUpThird : MonoBehaviour
     public float _timer = 0;
     public float _startTimer = 0;
     public float _holdTime = 1;
-    public bool held = false;
+    public bool heldAgain2 = false;
 
     public Slider _sliderInstance;
 
@@ -70,7 +70,7 @@ public class PickUpThird : MonoBehaviour
             }
 
             // Adds time onto the timer so long as the key is pressed
-            if (Input.GetKey(key) && held == false)
+            if (Input.GetKey(key) && heldAgain2 == false)
             {
                 _sliderInstance.gameObject.SetActive(true);
                 _timer += Time.deltaTime;
@@ -79,23 +79,25 @@ public class PickUpThird : MonoBehaviour
                 if (_timer > (_startTimer + _holdTime))
                 {
                     Carrying.enabled = true;
-                    held = true;
+                    heldAgain2 = true;
                     ButtonHeld();
                     card.position = cardMap.position;
                     DoorCan = true;
                 }
             }
         }
+
+        if (heldAgain2 == true)
+        {
+            inter.enabled = false;
+        }
+
         if (Input.GetKeyUp(key))
         {
             Carrying.enabled = false;
             _sliderInstance.gameObject.SetActive(false);
         }
-        if (held == true)
-        {
-            inter.enabled = false;
-        }
-        if (Gate.GateCheck == true)
+        if (Gate3.GateCheck == true)
         {
             cardMovement = true;
         }
@@ -140,15 +142,16 @@ public class PickUpThird : MonoBehaviour
     {
         Debug.Log("New Value" + value);
     }
-
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Cards"))
         {
-            _inColl = true;
+            if (other.gameObject.name == "DeskThreeInteract")
+            {
+                inter.enabled = true;
 
-            inter.enabled = true;
-
+                _inColl = true;
+            }
             //DoorCan = true;
         }
 
@@ -156,7 +159,7 @@ public class PickUpThird : MonoBehaviour
         {
             if (DoorCan == true)
             {
-                if (held == true)
+                if (heldAgain2 == true)
                 {
                     door1anim.enabled = true;
                 }
@@ -170,6 +173,7 @@ public class PickUpThird : MonoBehaviour
         if (other.CompareTag("Cards"))
         {
             inter.enabled = false;
+
             _inColl = false;
         }
     }
