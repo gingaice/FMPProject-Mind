@@ -11,10 +11,12 @@ public class Gate : MonoBehaviour
     public bool _inZone = false;
 
     public Image press;
+    public Image locked;
     // Start is called before the first frame update
     void Start()
     {
         press.enabled = false;
+        locked.enabled = false;
     }
 
     // Update is called once per frame
@@ -32,6 +34,11 @@ public class Gate : MonoBehaviour
         {
             GateCheck = true;
             press.enabled = false;
+        }
+
+        if(PickUp.noLock == true)
+        {
+            locked.enabled = false;
         }
     }
 

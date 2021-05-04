@@ -28,6 +28,7 @@ public class PickUpThird : MonoBehaviour
     public bool _inColl = false;
 
     public Animator door1anim;
+    public Animator door2anim;
 
     public Image Carrying;
     public Image inter;
@@ -41,10 +42,13 @@ public class PickUpThird : MonoBehaviour
 
     public Slider _sliderInstance;
 
+    public static bool noLock3 = false;
+
     // Start is called before the first frame update
     void Start()
     {
         door1anim.enabled = false;
+        door2anim.enabled = false;
 
         Carrying.enabled = false;
 
@@ -89,6 +93,8 @@ public class PickUpThird : MonoBehaviour
 
         if (heldAgain2 == true)
         {
+            noLock3 = true;
+            door2anim.enabled = true;
             inter.enabled = false;
         }
 

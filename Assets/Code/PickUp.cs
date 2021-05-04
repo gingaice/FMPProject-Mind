@@ -42,6 +42,8 @@ public class PickUp : MonoBehaviour
 
     public Slider _sliderInstance;
 
+    public static bool noLock = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -95,8 +97,10 @@ public class PickUp : MonoBehaviour
         }
         if(held == true)
         {
+            noLock = true;
             inter.enabled = false;
         }
+
         if (Gate.GateCheck == true)
         {
             cardMovement = true;

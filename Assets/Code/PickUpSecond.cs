@@ -48,6 +48,7 @@ public class PickUpSecond : MonoBehaviour
 
     public Slider _sliderInstance;
 
+    public static bool noLock2 = false;
 
     // Start is called before the first frame update
     void Start()
@@ -103,6 +104,7 @@ public class PickUpSecond : MonoBehaviour
         }
         if(heldAgain == true)
         {
+            noLock2 = true;
             inter.enabled = false;
         }
         if (Gate2.GateCheck == true)
