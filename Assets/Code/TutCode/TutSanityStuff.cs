@@ -17,6 +17,13 @@ public class TutSanityStuff : MonoBehaviour
 
     public static bool isSafe;
 
+    public static float shift = 1;
+    private Texture texture;
+    private Material material;
+
+    public float _increaseAmount = 1;
+    public float increaser = 1;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,13 +32,30 @@ public class TutSanityStuff : MonoBehaviour
         inSight = false;
     }
 
+    void Awake()
+    {
+        material = new Material(Shader.Find("Hidden/Distortion"));
+        texture = Resources.Load<Texture>("Checkerboard-big");
+    }
+
+
+    void OnRenderImage(RenderTexture source, RenderTexture destination)
+    {
+        material.SetFloat("_ValueX", shift);
+        material.SetTexture("_Texture", texture);
+        Graphics.Blit(source, destination, material);
+    }
+
     // Update is called once per frame
     void Update()
     {
+        shift = _increaseAmount;
+
         if (TutFOVDetection.checker == true)
         {
             Mhealth -= Time.deltaTime * damageInsanity;
             inSight = true;
+            _increaseAmount += Time.deltaTime * increaser;
         }
         else
         {
