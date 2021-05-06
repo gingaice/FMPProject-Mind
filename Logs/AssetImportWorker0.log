@@ -80,3 +80,74 @@ Received Import Request.
 Start importing Assets/Scenes/Main.unity using Guid(364b3c767838d42419ec3faa57db3108) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '71c09a57753e91ddcda934a2f33767be') in 0.012583 seconds
   Import took 0.014388 seconds .
 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.000696 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.22 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.681 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.21 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1167 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 130.9 MB.
+System memory in use after: 131.0 MB.
+
+Unloading 6 unused Assets to reduce memory usage. Loaded Objects now: 1642.
+Total: 1.446300 ms (FindLiveObjects: 0.110300 ms CreateObjectMapping: 0.031400 ms MarkObjects: 1.245300 ms  DeleteObjects: 0.058400 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 59.873759 seconds.
+  path: Assets/Code/Character/CharController.cs
+  artifactKey: Guid(902a16615f49b2c4fa7afde320de6e46) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Code/Character/CharController.cs using Guid(902a16615f49b2c4fa7afde320de6e46) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '32e39eecdc565b0d579b46623a7a9e28') in 0.021030 seconds
+  Import took 0.022702 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 201.278287 seconds.
+  path: Assets/Anims/idle/New Animator Controller.controller
+  artifactKey: Guid(adcf51209d84c924db5892fb2a3bd72f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Anims/idle/New Animator Controller.controller using Guid(adcf51209d84c924db5892fb2a3bd72f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '39cff4f85e80a191975cf0b9b7da939a') in 0.020524 seconds
+  Import took 0.022839 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.000678 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.21 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.658 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.21 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1167 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 131.0 MB.
+System memory in use after: 131.0 MB.
+
+Unloading 6 unused Assets to reduce memory usage. Loaded Objects now: 1645.
+Total: 1.485800 ms (FindLiveObjects: 0.111000 ms CreateObjectMapping: 0.032600 ms MarkObjects: 1.285400 ms  DeleteObjects: 0.055900 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 20.538826 seconds.
+  path: Assets/Anims/idle/New Animator Controller.controller
+  artifactKey: Guid(adcf51209d84c924db5892fb2a3bd72f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Anims/idle/New Animator Controller.controller using Guid(adcf51209d84c924db5892fb2a3bd72f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bc1ff2797609d5e49ae56b7abeecb050') in 0.019584 seconds
+  Import took 0.021440 seconds .
+
+AssetImportWorkerClient::OnTransportError - code=2 error=End of file

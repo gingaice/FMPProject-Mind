@@ -3606,6 +3606,7 @@ GameObject:
   - component: {fileID: 461998563}
   - component: {fileID: 461998558}
   - component: {fileID: 461998564}
+  - component: {fileID: 461998565}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -3738,6 +3739,25 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 461998557}
   m_Enabled: 1
+--- !u!95 &461998565
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 461998557}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: adcf51209d84c924db5892fb2a3bd72f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &461998566
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3756,6 +3776,7 @@ MonoBehaviour:
   _sprintTime: 15
   _canSprint: 1
   _stamBar: {fileID: 1181649543}
+  animation_bool: 0
 --- !u!1 &463293803
 GameObject:
   m_ObjectHideFlags: 0
@@ -15881,7 +15902,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 919132147646341409}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: adcf51209d84c924db5892fb2a3bd72f, type: 2}
   m_CullingMode: 0
