@@ -79,7 +79,7 @@ public class CharController : MonoBehaviour
 
         if (animation_bool == true)
         {
-            animation.Play("Running");
+            GetComponent<Animation>().Play("Running");
         }
 
         if (_speedDecrease == true)
