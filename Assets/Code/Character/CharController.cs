@@ -21,13 +21,6 @@ public class CharController : MonoBehaviour
 
     public Slider _stamBar;
 
-    public AnimationClip[] weaponAnimationClip;
-
-    protected Animator animator;
-    protected AnimatorOverrideController animatorOverrideController;
-
-    protected int weaponIndex;
-
     void Start()
     {
         //the camera is facing the way that isometric moves so that the character doesnt move on the z path
@@ -44,11 +37,6 @@ public class CharController : MonoBehaviour
         _stamBar.wholeNumbers = true;
         _stamBar.gameObject.SetActive(false);
 
-        animator = GetComponent<Animator>();
-        weaponIndex = 0;
-
-        animatorOverrideController = new AnimatorOverrideController(animator.runtimeAnimatorController);
-        animator.runtimeAnimatorController = animatorOverrideController;
     }
 
     // Update is called once per frame
@@ -116,8 +104,6 @@ public class CharController : MonoBehaviour
     {
         if(OutOfSafeSpace.isSafe == false)
         {
-            animatorOverrideController["Sneak Walk"] = weaponAnimationClip[weaponIndex];
-
             Vector3 direction = new Vector3(Input.GetAxis("HorizontalKey"), 0, Input.GetAxis("VerticalKey"));
             Vector3 rightMovement = right * moveSpeed * Time.deltaTime * Input.GetAxis("HorizontalKey");
             Vector3 upMovement = forward * moveSpeed * Time.deltaTime * Input.GetAxis("VerticalKey");
