@@ -21,10 +21,12 @@ public class CharController : MonoBehaviour
 
     public Slider _stamBar;
 
+    public Renderer Running;
+    public Renderer Sneaking;
+    public Renderer Idle;
+
     void Start()
     {
-
-
         //the camera is facing the way that isometric moves so that the character doesnt move on the z path
         forward = Camera.main.transform.forward;
         //for claratiy purposes so that y doesnt change
@@ -39,6 +41,8 @@ public class CharController : MonoBehaviour
         _stamBar.wholeNumbers = true;
         _stamBar.gameObject.SetActive(false);
 
+        Running.enabled = false;
+        Sneaking.enabled = false;
     }
 
     // Update is called once per frame
@@ -56,14 +60,32 @@ public class CharController : MonoBehaviour
 
         if (Input.anyKey)
         {
-
             Move();
+            Idle.enabled = false;
+            Sneaking.enabled = true;
+
+
+            if (Input.GetKeyDown(KeyCode.LeftShift))
+            {
+                Idle.enabled = false;
+                Sneaking.enabled = false;
+            }
+        }
+        else
+        {
+            Idle.enabled = true;
+            Sneaking.enabled = false;
         }
 
-        if(_canSprint == true)
+
+        if (_canSprint == true)
         {
             if (Input.GetKeyDown(KeyCode.LeftShift))
             {
+                Running.enabled = true;
+                Sneaking.enabled = false;
+                Idle.enabled = false;
+
                 if (_sprintTime >= 0)
                 {
                     _stamBar.gameObject.SetActive(true);
@@ -87,6 +109,8 @@ public class CharController : MonoBehaviour
 
         if (Input.GetKeyUp(KeyCode.LeftShift))
         {
+            Running.enabled = false;
+            Idle.enabled = true;
             _stamBar.gameObject.SetActive(false);
             moveSpeed = 3.5f;
             _speedDecrease = false;
@@ -94,6 +118,11 @@ public class CharController : MonoBehaviour
 
         if(_sprintTime <= 1)
         {
+            Running.enabled = false;
+            Sneaking.enabled = false;
+            Idle.enabled = true;
+
+
             _stamBar.gameObject.SetActive(false);
             moveSpeed = 3.5f;
             _speedDecrease = false;
@@ -105,6 +134,8 @@ public class CharController : MonoBehaviour
     {
         if(OutOfSafeSpace.isSafe == false)
         {
+
+
             Vector3 direction = new Vector3(Input.GetAxis("HorizontalKey"), 0, Input.GetAxis("VerticalKey"));
             Vector3 rightMovement = right * moveSpeed * Time.deltaTime * Input.GetAxis("HorizontalKey");
             Vector3 upMovement = forward * moveSpeed * Time.deltaTime * Input.GetAxis("VerticalKey");
