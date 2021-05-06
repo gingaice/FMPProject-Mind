@@ -21,6 +21,8 @@ public class CharController : MonoBehaviour
 
     public Slider _stamBar;
 
+    public bool animation_bool;
+
     void Start()
     {
         //the camera is facing the way that isometric moves so that the character doesnt move on the z path
@@ -64,6 +66,8 @@ public class CharController : MonoBehaviour
             {
                 if (_sprintTime >= 0)
                 {
+                    animation_bool = true;
+
                     _stamBar.gameObject.SetActive(true);
                     _stamBar.value += Time.deltaTime;
                     moveSpeed = 5.5f;
@@ -73,8 +77,12 @@ public class CharController : MonoBehaviour
             }
         }
 
+        if (animation_bool == true)
+        {
+            animation.Play("Running");
+        }
 
-        if(_speedDecrease == true)
+        if (_speedDecrease == true)
         {
             _sprintTime -= Time.deltaTime * moveSpeed;
         }
