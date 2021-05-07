@@ -25,6 +25,8 @@ public class CharController : MonoBehaviour
     public Renderer Sneaking;
     public Renderer Idle;
 
+    public bool sprinting = false;
+
     void Start()
     {
         //the camera is facing the way that isometric moves so that the character doesnt move on the z path
@@ -58,12 +60,18 @@ public class CharController : MonoBehaviour
             _canSprint = true;
         }
 
+
+
         if (Input.anyKey)
         {
             Move();
             Idle.enabled = false;
             Sneaking.enabled = true;
 
+            if (sprinting == true)
+            {
+                Sneaking.enabled = false;
+            }
 
             if (Input.GetKeyDown(KeyCode.LeftShift))
             {
@@ -82,6 +90,8 @@ public class CharController : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.LeftShift))
             {
+                sprinting = true;
+
                 Running.enabled = true;
                 Sneaking.enabled = false;
                 Idle.enabled = false;
@@ -109,6 +119,7 @@ public class CharController : MonoBehaviour
 
         if (Input.GetKeyUp(KeyCode.LeftShift))
         {
+            sprinting = false;
             Running.enabled = false;
             Idle.enabled = true;
             _stamBar.gameObject.SetActive(false);
@@ -134,6 +145,7 @@ public class CharController : MonoBehaviour
     {
         if(OutOfSafeSpace.isSafe == false)
         {
+
 
 
             Vector3 direction = new Vector3(Input.GetAxis("HorizontalKey"), 0, Input.GetAxis("VerticalKey"));
