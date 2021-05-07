@@ -4807,6 +4807,7 @@ MonoBehaviour:
   Running: {fileID: 4780243438123389946}
   Sneaking: {fileID: 1751397252}
   Idle: {fileID: 165355097}
+  sprinting: 0
 --- !u!1 &463293803
 GameObject:
   m_ObjectHideFlags: 0
@@ -9526,6 +9527,7 @@ MonoBehaviour:
   Running: {fileID: 0}
   Sneaking: {fileID: 0}
   Idle: {fileID: 0}
+  sprinting: 0
 --- !u!114 &970117403
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10862,7 +10864,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 2064f44525d49dc439fb44c8ca82e24c, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.4
+  m_Volume: 0.6
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -18618,7 +18620,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 2064f44525d49dc439fb44c8ca82e24c, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.4
+  m_Volume: 0.6
   m_Pitch: 1
   Loop: 1
   Mute: 0

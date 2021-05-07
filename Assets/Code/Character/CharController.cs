@@ -130,8 +130,8 @@ public class CharController : MonoBehaviour
         if(_sprintTime <= 1)
         {
             Running.enabled = false;
-            Sneaking.enabled = false;
-            Idle.enabled = true;
+            Sneaking.enabled = true;
+            Idle.enabled = false;
 
 
             _stamBar.gameObject.SetActive(false);
