@@ -12309,6 +12309,7 @@ GameObject:
   - component: {fileID: 1231454164}
   - component: {fileID: 1231454169}
   - component: {fileID: 1231454168}
+  - component: {fileID: 1231454162}
   m_Layer: 0
   m_Name: Ai
   m_TagString: Untagged
@@ -12316,6 +12317,25 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!95 &1231454162
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1231454161}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3103f873377afc04ba8c2ef53b32a495, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!65 &1231454164
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -34612,6 +34632,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7549251125058257565}
   - component: {fileID: 7174097085675903016}
+  - component: {fileID: 7174097085675903017}
   m_Layer: 0
   m_Name: eye
   m_TagString: Untagged
@@ -34715,6 +34736,25 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!95 &7174097085675903017
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7174097085675903015}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3103f873377afc04ba8c2ef53b32a495, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!33 &7178570244619676469
 MeshFilter:
   m_ObjectHideFlags: 0
