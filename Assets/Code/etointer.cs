@@ -11,7 +11,13 @@ public class etointer : MonoBehaviour
     {
         inter.enabled = false;
     }
-
+    void Update()
+    {
+        if(TutPickUp.Locked == true)
+        {
+            inter.enabled = false;
+        }
+    }
     // Update is called once per frame
     private void OnTriggerEnter(Collider other)
     {

@@ -23,6 +23,8 @@ public class TutPickUp : MonoBehaviour
 
     public Slider _sliderInstance;
 
+    public static bool Locked = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -90,6 +92,7 @@ public class TutPickUp : MonoBehaviour
                     // Once the timer float has added on the required holdTime, changes the bool (for a single trigger), and calls the function
                     if (_timer > (_startTimer + _holdTime))
                     {
+                        Locked = true;
                         pogup.enabled = true;
                         held = true;
                         ButtonHeld();
