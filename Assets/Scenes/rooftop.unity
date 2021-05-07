@@ -34749,6 +34749,7 @@ GameObject:
   - component: {fileID: 1126336219}
   - component: {fileID: 1126336218}
   - component: {fileID: 1126336217}
+  - component: {fileID: 1126336224}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -34970,6 +34971,14 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+--- !u!81 &1126336224
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1126336216}
+  m_Enabled: 1
 --- !u!1 &1127642450
 GameObject:
   m_ObjectHideFlags: 0
