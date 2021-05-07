@@ -76,12 +76,16 @@ public class TutPickUp : MonoBehaviour
             }
             if (this.gameObject.name == "Key")
             {
-                if (Input.GetKeyDown(key))
+                if(held == true)
                 {
-                    _startTimer = Time.time;
-                    _timer = _startTimer;
-                    _sliderInstance.value = 0;
+                    if (Input.GetKeyDown(key))
+                    {
+                        _startTimer = Time.time;
+                        _timer = _startTimer;
+                        _sliderInstance.value = 0;
+                    }
                 }
+
 
                 // Adds time onto the timer so long as the key is pressed
                 if (Input.GetKey(key) && held == false)
