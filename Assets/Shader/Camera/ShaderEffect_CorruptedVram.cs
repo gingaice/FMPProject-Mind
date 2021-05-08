@@ -13,10 +13,10 @@ public class ShaderEffect_CorruptedVram : MonoBehaviour
 	public float increaser = 1;
 
 	
-	void Awake ()
+	void Awake()
 	{
-		material = new Material( Shader.Find("Hidden/Distortion") );
-		texture = Resources.Load<Texture>("Checkerboard-big");
+		//material = new Material( Shader.Find("Hidden/Distortion") );
+		//texture = Resources.Load<Texture>("Checkerboard-big");
 	}
 	
 
@@ -25,11 +25,15 @@ public class ShaderEffect_CorruptedVram : MonoBehaviour
 		material.SetFloat("_ValueX", shiftCam);
 		material.SetTexture("_Texture", texture);
 		Graphics.Blit (source, destination, material);
-
+		
 	}
 
-	void update()
+	void Update()
     {
 		TutSanityStuff.shift = shiftCam;
-    }
+
+		material = new Material(Shader.Find("Hidden/Distortion"));
+		texture = Resources.Load<Texture>("Checkerboard-big");
+
+	}
 }

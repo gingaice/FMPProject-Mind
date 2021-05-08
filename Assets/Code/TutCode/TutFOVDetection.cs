@@ -106,7 +106,12 @@ public class TutFOVDetection : MonoBehaviour
 
         if (checker == true)
         {
-            _navMeshAgent.destination = Player.transform.position;
+            Chase();
         }
+    }
+
+    void Chase()
+    {
+        _navMeshAgent.destination = Player.transform.position;
     }
 }
