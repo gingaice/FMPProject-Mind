@@ -77,7 +77,7 @@ public class NPC1SimpleMove : MonoBehaviour
     public static bool inFOV(Transform checkingObject, Transform target, float maxAngle, float maxRadius)
     {
         // this checks every object in the radius of the Ai
-        Collider[] overlaps = new Collider[50];
+        Collider[] overlaps = new Collider[150];
         int count = Physics.OverlapSphereNonAlloc(checkingObject.position, maxRadius, overlaps);
 
         for (int i = 0; i < count + 1; i++)
