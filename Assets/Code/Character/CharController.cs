@@ -27,8 +27,12 @@ public class CharController : MonoBehaviour
 
     public bool sprinting = false;
 
+    public AudioSource foot;
+
     void Start()
     {
+        foot.enabled = false;
+
         //the camera is facing the way that isometric moves so that the character doesnt move on the z path
         forward = Camera.main.transform.forward;
         //for claratiy purposes so that y doesnt change
@@ -64,6 +68,7 @@ public class CharController : MonoBehaviour
 
         if (Input.anyKey)
         {
+            foot.enabled = true;
             Move();
             Idle.enabled = false;
             Sneaking.enabled = true;
@@ -81,6 +86,7 @@ public class CharController : MonoBehaviour
         }
         else
         {
+            foot.enabled = false;
             Idle.enabled = true;
             Sneaking.enabled = false;
         }
