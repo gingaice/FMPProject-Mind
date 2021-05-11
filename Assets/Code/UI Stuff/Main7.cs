@@ -4,15 +4,13 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class StartMenu : MonoBehaviour
+public class Main7 : MonoBehaviour
 {
-    public Canvas Menu;
-
     public bool LoadScene = false;
     public Image Loading;
     public Image SLoad;
     public Image loadingNow;
-
+    // Start is called before the first frame update
     void Start()
     {
         Loading.enabled = false;
@@ -20,31 +18,7 @@ public class StartMenu : MonoBehaviour
         loadingNow.enabled = false;
     }
 
-    public void loadGame()
-    {
-        StartCoroutine(LoadLevel1());
-        LoadScene = true;
-    }
-    public void loadMainMenu()
-    {
-        SceneManager.LoadScene("StartMenu");
-    }
-    public void loadSettingsMenu()
-    {
-        SceneManager.LoadScene("Settings");
-    }
-    public void loadResume()
-    {
-        Menu.enabled = false;
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-    }
-    public void CloseGame()
-    {
-        Application.Quit();
-        Debug.Log("the game has quit");
-    }
-    /**
+    // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space) && LoadScene == false)
@@ -53,10 +27,9 @@ public class StartMenu : MonoBehaviour
             StartCoroutine(LoadLevel1());
         }
     }
-    **/
     IEnumerator LoadLevel1()
     {
-        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync("Tutorial");
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync("Year 7");
         SLoad.enabled = false;
         Loading.enabled = true;
         loadingNow.enabled = true;
