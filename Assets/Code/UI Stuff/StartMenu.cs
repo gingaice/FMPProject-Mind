@@ -8,6 +8,8 @@ public class StartMenu : MonoBehaviour
 {
     public Canvas Menu;
 
+    public Canvas LoadingScreen;
+
     public bool LoadScene = false;
     public Image Loading;
     public Image SLoad;
@@ -15,6 +17,7 @@ public class StartMenu : MonoBehaviour
 
     void Start()
     {
+        LoadingScreen.enabled = false;
         Loading.enabled = false;
         SLoad.enabled = false;
         loadingNow.enabled = false;
@@ -22,6 +25,8 @@ public class StartMenu : MonoBehaviour
 
     public void loadGame()
     {
+        Menu.enabled = false;
+        LoadingScreen.enabled = true;
         StartCoroutine(LoadLevel1());
         LoadScene = true;
     }
