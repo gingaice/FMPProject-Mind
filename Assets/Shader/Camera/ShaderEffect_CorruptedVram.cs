@@ -5,18 +5,18 @@ using UnityEngine;
 public class ShaderEffect_CorruptedVram : MonoBehaviour 
 {
 
-	public float shiftCam = 1;
+	public float shiftCam = -0.36f;
 	private Texture texture;
 	private Material material;
 
-	public float _increaseAmount = 1;
-	public float increaser = 1;
+	public float _increaseAmount = 0.5f;
+	//public float increaser = 1;
 
 	
 	void Awake()
 	{
-		//material = new Material( Shader.Find("Hidden/Distortion") );
-		//texture = Resources.Load<Texture>("Checkerboard-big");
+		material = new Material( Shader.Find("Hidden/Distortion") );
+		texture = Resources.Load<Texture>("Checkerboard-big");
 	}
 	
 
@@ -24,16 +24,29 @@ public class ShaderEffect_CorruptedVram : MonoBehaviour
 	{
 		material.SetFloat("_ValueX", shiftCam);
 		material.SetTexture("_Texture", texture);
-		Graphics.Blit (source, destination, material);
+	    Graphics.Blit (source, destination, material);
 		
 	}
 
 	void Update()
     {
-		TutSanityStuff.shift = shiftCam;
 
-		material = new Material(Shader.Find("Hidden/Distortion"));
-		texture = Resources.Load<Texture>("Checkerboard-big");
+		if(TutFOVDetection.checker == true)
+        {
+			shiftCam += Time.deltaTime * _increaseAmount;
+		}
+        else
+        {
+			shiftCam -= Time.deltaTime * _increaseAmount;
+        }
+
+		if(shiftCam <= -0.36f)
+        {
+			shiftCam = -0.36f;
+        }
+
+		//material = new Material(Shader.Find("Hidden/Distortion"));
+		//texture = Resources.Load<Texture>("Checkerboard-big");
 
 	}
 }

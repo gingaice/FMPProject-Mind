@@ -13,12 +13,15 @@ public class TutTeach3 : MonoBehaviour
     public bool _screenGoUp;
 
     public Image myPanel;
-    float fadeTime = 3f;
-    Color colorToFadeTo;
+    //float fadeTime = 3f;
+    //Color colorToFadeTo;
+
+    public Canvas mainMenu;
 
     // Start is called before the first frame update
     void Start()
     {
+        mainMenu.enabled = false;
         //myPanel.enabled = false;
         myPanel.GetComponent<CanvasRenderer>().SetAlpha(0f);
     }
@@ -37,7 +40,10 @@ public class TutTeach3 : MonoBehaviour
             //myPanel.enabled = true;
             //myPanel.GetComponent<CanvasRenderer>().SetAlpha(0.5f);
             myPanel.GetComponent<Image>().CrossFadeAlpha(1.98f, 2.0f, false);
+            mainMenu.enabled = true;
         }
+        
+
     }
     private void OnTriggerEnter(Collider other)
     {

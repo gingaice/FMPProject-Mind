@@ -22,7 +22,7 @@ public class TutSanityStuff : MonoBehaviour
     private Material material;
 
     public float _increaseAmount = 1;
-    public float increaser = 1;
+    public float increaser = 10;
 
     // Start is called before the first frame update
     void Start()

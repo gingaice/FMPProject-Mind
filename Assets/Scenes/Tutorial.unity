@@ -1829,8 +1829,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shiftCam: -0.36
-  _increaseAmount: 1
-  increaser: 1
+  _increaseAmount: 0.5
 --- !u!114 &325455581
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9809,7 +9808,7 @@ MonoBehaviour:
   regenTrue: 0
   menu: {fileID: 320045553}
   _increaseAmount: 1
-  increaser: 1
+  increaser: 10
 --- !u!136 &1805548160
 CapsuleCollider:
   m_ObjectHideFlags: 0
