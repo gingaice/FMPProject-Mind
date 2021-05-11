@@ -16,7 +16,7 @@ public class StartMenu : MonoBehaviour
     void Start()
     {
         Loading.enabled = false;
-        SLoad.enabled = true;
+        SLoad.enabled = false;
         loadingNow.enabled = false;
     }
 
