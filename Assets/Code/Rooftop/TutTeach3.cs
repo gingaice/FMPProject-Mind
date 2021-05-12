@@ -18,6 +18,7 @@ public class TutTeach3 : MonoBehaviour
 
     public Canvas mainMenu;
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -42,8 +43,6 @@ public class TutTeach3 : MonoBehaviour
             myPanel.GetComponent<Image>().CrossFadeAlpha(1.98f, 2.0f, false);
             mainMenu.enabled = true;
         }
-        
-
     }
     private void OnTriggerEnter(Collider other)
     {
