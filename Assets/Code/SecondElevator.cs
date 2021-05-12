@@ -2,13 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class SecondElevator : MonoBehaviour
 {
+    public bool LoadScene = false;
+    public Image Loading;
+
     // Start is called before the first frame update
     void Start()
     {
-
+        Loading.enabled = false;
     }
 
     // Update is called once per frame
@@ -20,7 +24,19 @@ public class SecondElevator : MonoBehaviour
     {
         if (other.name == "Player")
         {
-            SceneManager.LoadScene("Rooftop");
+            StartCoroutine(LoadLevel1());
+            LoadScene = true;
+        }
+    }
+
+    IEnumerator LoadLevel1()
+    {
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync("Rooftop");
+        Loading.enabled = true;
+
+        while (!asyncLoad.isDone)
+        {
+            yield return null;
         }
     }
 }
