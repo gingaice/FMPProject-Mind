@@ -304,7 +304,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 0.25
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -1002,8 +1002,8 @@ MonoBehaviour:
   LoadingScreen: {fileID: 1964641218}
   LoadScene: 0
   Loading: {fileID: 1025455246}
-  SLoad: {fileID: 0}
-  loadingNow: {fileID: 0}
+  SLoad: {fileID: 1025455246}
+  loadingNow: {fileID: 1025455246}
 --- !u!114 &1743188234
 MonoBehaviour:
   m_ObjectHideFlags: 0
