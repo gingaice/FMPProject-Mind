@@ -32,11 +32,13 @@ public class PickUpSecond : MonoBehaviour
     public bool cardfreeze8 = false;
 
     public bool _inColl = false;
+    public bool _FakeInColl = false;
 
     public Animator door1anim;
     public Animator door2anim;
 
     public Image Carrying;
+    public Image nothingup;
     public Image inter;
 
     public string key = "e";
@@ -57,6 +59,7 @@ public class PickUpSecond : MonoBehaviour
         door2anim.enabled = false;
 
         Carrying.enabled = false;
+        nothingup.enabled = false;
         inter.enabled = false;
 
         _sliderInstance.minValue = _timer;
@@ -69,6 +72,38 @@ public class PickUpSecond : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (_FakeInColl == true)
+        {
+
+
+            if (Input.GetKeyDown(key))
+            {
+                _startTimer = Time.time;
+                _timer = _startTimer;
+                _sliderInstance.value = 0;
+            }
+
+            // Adds time onto the timer so long as the key is pressed
+            if (Input.GetKey(key) && heldAgain == false)
+            {
+                _sliderInstance.gameObject.SetActive(true);
+                _timer += Time.deltaTime;
+                _sliderInstance.value += Time.deltaTime;
+                // Once the timer float has added on the required holdTime, changes the bool (for a single trigger), and calls the function
+                if (_timer > (_startTimer + _holdTime))
+                {
+                    nothingup.enabled = true;
+                }
+            }
+
+            if (Input.GetKeyUp(key))
+            {
+                nothingup.enabled = false;
+                _sliderInstance.gameObject.SetActive(false);
+            }
+
+        }
+
         if (_inColl == true)
         {
             // Starts the timer from when the key is pressed
@@ -172,9 +207,15 @@ public class PickUpSecond : MonoBehaviour
 
                 _inColl = true;
             }
+
             //DoorCan = true;
         }
+        if (other.gameObject.name == "Dummy")
+        {
+            _FakeInColl = true;
 
+            inter.enabled = true;
+        }
         if (other.CompareTag("Gate"))
         {
             if (DoorCan == true)
@@ -196,6 +237,12 @@ public class PickUpSecond : MonoBehaviour
             inter.enabled = false;
 
             _inColl = false;
+        }
+        if (other.gameObject.name == "Dummy")
+        {
+            _FakeInColl = false;
+
+            inter.enabled = false;
         }
     }
 

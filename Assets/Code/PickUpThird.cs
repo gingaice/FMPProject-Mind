@@ -196,15 +196,16 @@ public class PickUpThird : MonoBehaviour
                 _inColl = true;
             }
 
-            if(other.gameObject.name == "Dummy")
-            {
-                _FakeInColl = true;
 
-                inter.enabled = true;
-            }
             //DoorCan = true;
         }
 
+        if (other.gameObject.name == "Dummy")
+        {
+            _FakeInColl = true;
+
+            inter.enabled = true;
+        }
         if (other.CompareTag("Gate"))
         {
             if (DoorCan == true)
@@ -223,8 +224,14 @@ public class PickUpThird : MonoBehaviour
         if (other.CompareTag("Cards"))
         {
             inter.enabled = false;
-            _FakeInColl = false;
+
             _inColl = false;
+        }
+        if (other.gameObject.name == "Dummy")
+        {
+            _FakeInColl = false;
+
+            inter.enabled = false;
         }
     }
 
