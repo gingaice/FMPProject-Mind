@@ -26,12 +26,14 @@ public class PickUpThird : MonoBehaviour
     public bool cardfreeze5 = false;
 
     public bool _inColl = false;
+    public bool _FakeInColl = false;
 
     public Animator door1anim;
     public Animator door2anim;
 
     public Image Carrying;
     public Image inter;
+    public Image nothingup;
 
     public string key = "e";
 
@@ -51,7 +53,7 @@ public class PickUpThird : MonoBehaviour
         door2anim.enabled = false;
 
         Carrying.enabled = false;
-
+        nothingup.enabled = false;
         inter.enabled = false;
 
         _sliderInstance.minValue = _timer;
@@ -63,46 +65,81 @@ public class PickUpThird : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (_inColl == true)
+        if(_FakeInColl == true)
         {
-            // Starts the timer from when the key is pressed
-            if (Input.GetKeyDown(key))
-            {
-                _startTimer = Time.time;
-                _timer = _startTimer;
-                _sliderInstance.value = 0;
-            }
 
-            // Adds time onto the timer so long as the key is pressed
-            if (Input.GetKey(key) && heldAgain2 == false)
-            {
-                _sliderInstance.gameObject.SetActive(true);
-                _timer += Time.deltaTime;
-                _sliderInstance.value += Time.deltaTime;
-                // Once the timer float has added on the required holdTime, changes the bool (for a single trigger), and calls the function
-                if (_timer > (_startTimer + _holdTime))
+            
+                if (Input.GetKeyDown(key))
                 {
-                    Carrying.enabled = true;
-                    heldAgain2 = true;
-                    ButtonHeld();
-                    card.position = cardMap.position;
-                    DoorCan = true;
+                    _startTimer = Time.time;
+                    _timer = _startTimer;
+                    _sliderInstance.value = 0;
                 }
-            }
+
+                // Adds time onto the timer so long as the key is pressed
+                if (Input.GetKey(key) && heldAgain2 == false)
+                {
+                    _sliderInstance.gameObject.SetActive(true);
+                    _timer += Time.deltaTime;
+                    _sliderInstance.value += Time.deltaTime;
+                    // Once the timer float has added on the required holdTime, changes the bool (for a single trigger), and calls the function
+                    if (_timer > (_startTimer + _holdTime))
+                    {
+                        nothingup.enabled = true;
+                    }
+                }
+
+                if (Input.GetKeyUp(key))
+                {
+                    nothingup.enabled = false;
+                    _sliderInstance.gameObject.SetActive(false);
+                }
+            
         }
 
-        if (heldAgain2 == true)
-        {
-            noLock3 = true;
-            door2anim.enabled = true;
-            inter.enabled = false;
-        }
 
-        if (Input.GetKeyUp(key))
-        {
-            Carrying.enabled = false;
-            _sliderInstance.gameObject.SetActive(false);
+        if(_inColl == true)
+        { 
+                    // Starts the timer from when the key is pressed
+                    if (Input.GetKeyDown(key))
+                    {
+                        _startTimer = Time.time;
+                        _timer = _startTimer;
+                        _sliderInstance.value = 0;
+                    }
+
+                    // Adds time onto the timer so long as the key is pressed
+                    if (Input.GetKey(key) && heldAgain2 == false)
+                    {
+                        _sliderInstance.gameObject.SetActive(true);
+                        _timer += Time.deltaTime;
+                        _sliderInstance.value += Time.deltaTime;
+                        // Once the timer float has added on the required holdTime, changes the bool (for a single trigger), and calls the function
+                        if (_timer > (_startTimer + _holdTime))
+                        {
+                            Carrying.enabled = true;
+                            heldAgain2 = true;
+                            ButtonHeld();
+                            card.position = cardMap.position;
+                            DoorCan = true;
+                        }
+                    }
+
+                if (heldAgain2 == true)
+                {
+                    noLock3 = true;
+                    door2anim.enabled = true;
+                    inter.enabled = false;
+                }
+
+                if (Input.GetKeyUp(key))
+                {
+                    Carrying.enabled = false;
+                    _sliderInstance.gameObject.SetActive(false);
+                }
         }
+        
+
         if (Gate3.GateCheck == true)
         {
             cardMovement = true;
@@ -158,6 +195,13 @@ public class PickUpThird : MonoBehaviour
 
                 _inColl = true;
             }
+
+            if(other.gameObject.name == "Dummy")
+            {
+                _FakeInColl = true;
+
+                inter.enabled = true;
+            }
             //DoorCan = true;
         }
 
@@ -179,7 +223,7 @@ public class PickUpThird : MonoBehaviour
         if (other.CompareTag("Cards"))
         {
             inter.enabled = false;
-
+            _FakeInColl = false;
             _inColl = false;
         }
     }
