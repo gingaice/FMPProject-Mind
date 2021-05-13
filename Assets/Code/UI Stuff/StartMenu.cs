@@ -61,7 +61,7 @@ public class StartMenu : MonoBehaviour
     **/
     IEnumerator LoadLevel1()
     {
-        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync("Main");
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync("Tutorial");
         SLoad.enabled = false;
         Loading.enabled = true;
         loadingNow.enabled = true;
