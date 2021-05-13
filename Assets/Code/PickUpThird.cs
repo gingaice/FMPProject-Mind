@@ -26,14 +26,14 @@ public class PickUpThird : MonoBehaviour
     public bool cardfreeze5 = false;
 
     public bool _inColl = false;
-    public bool _FakeInColl = false;
+    //public bool _FakeInColl = false;
 
     public Animator door1anim;
     public Animator door2anim;
 
     public Image Carrying;
     public Image inter;
-    public Image nothingup;
+    //public Image nothingup;
 
     public string key = "e";
 
@@ -53,7 +53,7 @@ public class PickUpThird : MonoBehaviour
         door2anim.enabled = false;
 
         Carrying.enabled = false;
-        nothingup.enabled = false;
+        //nothingup.enabled = false;
         inter.enabled = false;
 
         _sliderInstance.minValue = _timer;
@@ -65,6 +65,7 @@ public class PickUpThird : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        /**
         if(_FakeInColl == true)
         {
 
@@ -97,7 +98,7 @@ public class PickUpThird : MonoBehaviour
             
         }
 
-
+        **/
         if(_inColl == true)
         { 
                     // Starts the timer from when the key is pressed
@@ -202,7 +203,7 @@ public class PickUpThird : MonoBehaviour
 
         if (other.gameObject.name == "Dummy")
         {
-            _FakeInColl = true;
+            //_FakeInColl = true;
 
             inter.enabled = true;
         }
@@ -229,7 +230,7 @@ public class PickUpThird : MonoBehaviour
         }
         if (other.gameObject.name == "Dummy")
         {
-            _FakeInColl = false;
+           // _FakeInColl = false;
 
             inter.enabled = false;
         }

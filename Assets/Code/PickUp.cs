@@ -75,7 +75,7 @@ public class PickUp : MonoBehaviour
             }
 
             // Adds time onto the timer so long as the key is pressed
-            if (Input.GetKey(key) && held == false)
+            if (Input.GetKey(key))
             {
                 _sliderInstance.gameObject.SetActive(true);
                 _timer += Time.deltaTime;
