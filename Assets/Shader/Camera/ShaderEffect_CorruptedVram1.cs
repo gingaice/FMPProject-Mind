@@ -18,9 +18,12 @@ public class ShaderEffect_CorruptedVram1 : MonoBehaviour
 		material = new Material( Shader.Find("Hidden/Distortion") );
 		texture = Resources.Load<Texture>("Checkerboard-big");
 	}
-	
 
-	void OnRenderImage (RenderTexture source, RenderTexture destination)
+    private void Start()
+    {
+		shiftCam = -0.36f;
+    }
+    void OnRenderImage (RenderTexture source, RenderTexture destination)
 	{
 		material.SetFloat("_ValueX", shiftCam);
 		material.SetTexture("_Texture", texture);
