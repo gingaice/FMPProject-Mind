@@ -77,12 +77,6 @@ public class CharController : MonoBehaviour
             {
                 Sneaking.enabled = false;
             }
-
-            if (Input.GetKeyDown(KeyCode.LeftShift))
-            {
-                Idle.enabled = false;
-                Sneaking.enabled = false;
-            }
         }
         else
         {
